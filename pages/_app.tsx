@@ -66,6 +66,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             alt="Picture of the author"
             layout="fill"
             objectFit="contain"
+            priority
           />
         </ImageContainer>
         <Component {...pageProps} />
