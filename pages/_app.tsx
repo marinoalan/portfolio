@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <main>
         <ImageContainer>
           <Image
-            src="/profile-img.png"
+            src="/profile-img.webp"
             alt="Picture of the author"
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
