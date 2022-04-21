@@ -78,6 +78,16 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="theme-color"
+          content="#48b1bf"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="#28313b"
+          media="(prefers-color-scheme: dark)"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GlobalStyle />
