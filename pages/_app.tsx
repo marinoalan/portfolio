@@ -74,6 +74,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="manifest" href="/manifest.json" />
         <meta
           name="theme-color"
           content="#48b1bf"
