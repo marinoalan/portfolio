@@ -25,9 +25,11 @@ const Span = styled.span`
     transition: width 0.5s cubic-bezier(0.74, -0.57, 0.33, 1.19);
   }
 
-  ${NavbarLogoContainer}:hover && {
-    ::after {
-      width: 100%;
+  @media (hover: hover) and (pointer: fine) {
+    ${NavbarLogoContainer}:hover && {
+      ::after {
+        width: 100%;
+      }
     }
   }
 `;
