@@ -1,5 +1,6 @@
 {
   "name": "Alan Marino Developer",
+  "short_name": "My App",
   "scope": "/",
   "display": "fullscreen"
 }

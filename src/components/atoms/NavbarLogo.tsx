@@ -2,12 +2,10 @@ import Link from "next/link";
 import { ReactChild } from "react";
 import styled from "styled-components";
 
-const TextLogoContainer = styled.div`
-  text-align: center;
-  padding-bottom: 1rem;
-`;
-
 const NavbarLogoContainer = styled.div`
+  display: grid;
+  row-gap: 1rem;
+  text-align: center;
   padding: 1rem 0rem;
 `;
 
@@ -35,12 +33,13 @@ const Span = styled.span`
 `;
 
 const TextLogo = ({ children }: { children: ReactChild }) => (
-  <TextLogoContainer>
+  <div>
     <Span>{children}</Span>
-  </TextLogoContainer>
+  </div>
 );
 
 const LinkContainer = styled.div`
+  margin-left: 2rem;
   a {
     text-decoration: none;
     color: var(--fontColor) !important;
@@ -48,7 +47,6 @@ const LinkContainer = styled.div`
 `;
 
 const NavbarLogo = () => (
-  // eslint-disable-next-line @next/next/link-passhref
   <LinkContainer>
     <Link href="/">
       <a>

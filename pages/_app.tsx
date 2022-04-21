@@ -17,6 +17,12 @@ const Image = styled(NextImage)`
   max-width: 100% !important;
   width: unset !important;
   min-width: unset !important;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -25,12 +31,14 @@ const GlobalStyle = createGlobalStyle`
       --backgroundColor: #28313b;
       --fontColor: #00ff00;
       --lineColor: #9e9e9e;
+      --boxShadowColor: #7c7c7cde;
     }
     
     @media (prefers-color-scheme: light) {
       --backgroundColor: #48b1bf;
       --fontColor: #080808;
       --lineColor: #00ff00;
+      --boxShadowColor: #00000070;
     }
   }
 
@@ -39,29 +47,13 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     margin: 0px;
     background-color: var(--backgroundColor);
-    margin-inline: 2rem;
     color: var(--fontColor);
   }
 `;
 
-const shimmer = (w: string, h: string) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#333" offset="20%" />
-      <stop stop-color="#222" offset="50%" />
-      <stop stop-color="#333" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#333" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`;
-
-const toBase64 = (str: string) =>
-  typeof window === "undefined"
-    ? Buffer.from(str).toString("base64")
-    : window.btoa(str);
+const Main = styled.main`
+  margin: 2rem 2rem 0rem 2rem;
+`;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -89,22 +81,20 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <GlobalStyle />
       <Navbar />
-      <main>
+      <Main>
         <ImageContainer>
           <Image
             src="/profile-img.webp"
             alt="Picture of the author"
             placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer("40%", "40%")
-            )}`}
+            blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk5uV9CwABZAEUcnMSRQAAAABJRU5ErkJggg==`}
             layout="fill"
             objectFit="contain"
             priority
           />
         </ImageContainer>
         <Component {...pageProps} />
-      </main>
+      </Main>
     </>
   );
 }

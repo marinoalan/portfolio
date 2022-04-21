@@ -3,7 +3,9 @@ import type { NextPage } from "next";
 const Home: NextPage = () => {
   return (
     <>
-      <p>Home</p>
+      {Array(20).fill(1).map((each) => (
+        <p key={each}>Home</p>
+      ))}
     </>
   );
 };

@@ -19,12 +19,21 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+  box-shadow: 0 4px 4px -2px var(--boxShadowColor);
+  background-color: var(--backgroundColor);
 `;
 
 const Ul = styled.ul`
   > a {
     color: var(--fontColor) !important;
   }
+`;
+
+const Nav = styled.nav`
+  margin-right: 2rem;
 `;
 
 const HomeLink: ILink = { href: "/", text: "Home" };
@@ -36,13 +45,13 @@ const links: ILink[] = [HomeLink, AboutLink];
 const Navbar = () => (
   <Header>
     <NavbarLogo />
-    <nav>
+    <Nav>
       <Ul>
         {links.map((link: ILink, index) => (
           <Link key={index} {...link} />
         ))}
       </Ul>
-    </nav>
+    </Nav>
   </Header>
 );
 
