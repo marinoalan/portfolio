@@ -22,17 +22,13 @@ const Image = styled(NextImage)`
 const GlobalStyle = createGlobalStyle`
   :root {
     @media (prefers-color-scheme: dark) {
-      --initialBackgroundColor: #485461;
-      --finalBackgroundColor: #28313b;
-
+      --backgroundColor: #28313b;
       --fontColor: #00ff00;
       --lineColor: #9e9e9e;
     }
     
     @media (prefers-color-scheme: light) {
-      --initialBackgroundColor: #06beb6;
-      --finalBackgroundColor: #48b1bf;
-      
+      --backgroundColor: #48b1bf;
       --fontColor: #080808;
       --lineColor: #00ff00;
     }
@@ -42,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: monospace;
     min-height: 100vh;
     margin: 0px;
-    background: linear-gradient(315deg, var(--initialBackgroundColor) 0%, var(--finalBackgroundColor) 74%);
+    background-color: var(--backgroundColor);
     margin-inline: 2rem;
     color: var(--fontColor);
   }
