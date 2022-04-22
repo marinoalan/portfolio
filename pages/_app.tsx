@@ -4,6 +4,7 @@ import Navbar from "@components/atoms/Navbar";
 import { createGlobalStyle } from "styled-components";
 import NextImage from "next/image";
 import styled from "styled-components";
+import { useState } from "react";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -62,6 +63,25 @@ const ImageShapeBackground = styled.div`
   height: 100%;
   background: linear-gradient(to right, #152b2e, #9e9e9ebd);
 `;
+
+const ImageWithGradient = () => {
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>();
+  return (
+    <ImageContainer>
+      {isImageLoaded && <ImageShapeBackground />}
+      <Image
+        src="/profile-img.webp"
+        alt="Picture of the author"
+        placeholder="blur"
+        blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk5uV9CwABZAEUcnMSRQAAAABJRU5ErkJggg==`}
+        layout="fill"
+        objectFit="contain"
+        priority
+        onLoadingComplete={() => setIsImageLoaded(true)}
+      />
+    </ImageContainer>
+  );
+};
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
