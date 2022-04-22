@@ -77,7 +77,9 @@ const ImageWithGradient = () => {
         layout="fill"
         objectFit="contain"
         priority
-        onLoadingComplete={() => setIsImageLoaded(true)}
+        onLoadingComplete={() => {
+          setIsImageLoaded(true);
+        }}
       />
     </ImageContainer>
   );
@@ -110,18 +112,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <Navbar />
       <Main>
-        <ImageContainer>
-          <ImageShapeBackground />
-          <Image
-            src="/profile-img.webp"
-            alt="Picture of the author"
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk5uV9CwABZAEUcnMSRQAAAABJRU5ErkJggg==`}
-            layout="fill"
-            objectFit="contain"
-            priority
-          />
-        </ImageContainer>
+        <ImageWithGradient />
         <Component {...pageProps} />
       </Main>
     </>
