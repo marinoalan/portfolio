@@ -55,6 +55,14 @@ const Main = styled.main`
   margin: 2rem 2rem 0rem 2rem;
 `;
 
+const ImageShapeBackground = styled.div`
+  width: 20%;
+  min-width: 13rem;
+  border-radius: 75% 25% 84% 16% / 85% 51% 49% 15%;
+  height: 100%;
+  background: linear-gradient(to right, #152b2e, #9e9e9ebd);
+`;
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -83,6 +91,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Navbar />
       <Main>
         <ImageContainer>
+          <ImageShapeBackground />
           <Image
             src="/profile-img.webp"
             alt="Picture of the author"
