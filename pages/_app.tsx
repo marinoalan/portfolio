@@ -11,6 +11,7 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   height: 30vh;
+  max-height: 30vw;
   min-height: 11rem;
 `;
 
@@ -57,11 +58,21 @@ const Main = styled.main`
 `;
 
 const ImageShapeBackground = styled.div`
-  width: 20%;
+  width: 30%;
+  max-width: 30vh;
   min-width: 13rem;
   border-radius: 75% 25% 84% 16% / 85% 51% 49% 15%;
   height: 100%;
-  background: linear-gradient(to right, #152b2e, #9e9e9ebd);
+
+  @media (prefers-color-scheme: dark) {
+    --imageBackgroundColor: var(--fontColor);
+  }
+  
+  @media (prefers-color-scheme: light) {
+    --imageBackgroundColor: #152b2e;
+  }
+  
+  background: linear-gradient(to right, var(--imageBackgroundColor), #9e9e9ebd);
 `;
 
 const ImageWithGradient = () => {
