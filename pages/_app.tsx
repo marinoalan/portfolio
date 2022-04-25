@@ -5,6 +5,7 @@ import { createGlobalStyle } from "styled-components";
 import NextImage from "next/image";
 import styled from "styled-components";
 import { useState } from "react";
+import profileImg from "../public/profile-img.webp";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -67,11 +68,11 @@ const ImageShapeBackground = styled.div`
   @media (prefers-color-scheme: dark) {
     --imageBackgroundColor: var(--fontColor);
   }
-  
+
   @media (prefers-color-scheme: light) {
     --imageBackgroundColor: #152b2e;
   }
-  
+
   background: linear-gradient(to right, var(--imageBackgroundColor), #9e9e9ebd);
 `;
 
@@ -81,8 +82,8 @@ const ImageWithGradient = () => {
     <ImageContainer>
       {isImageLoaded && <ImageShapeBackground />}
       <Image
-        src="/profile-img.webp"
-        alt="Picture of the author"
+        src={profileImg}
+        alt="Profile image"
         placeholder="blur"
         blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk5uV9CwABZAEUcnMSRQAAAABJRU5ErkJggg==`}
         layout="fill"
