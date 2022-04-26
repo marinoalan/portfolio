@@ -45,6 +45,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  html {
+    -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+  }
+
   body {
     font-family: monospace;
     min-height: 100vh;

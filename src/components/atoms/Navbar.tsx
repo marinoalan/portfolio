@@ -24,6 +24,9 @@ const Header = styled.header`
   z-index: 1000;
   box-shadow: 0 4px 4px -2px var(--boxShadowColor);
   background-color: var(--backgroundColor);
+  min-height: 6rem;
+  font-size: 1.1rem;
+  font-weight: bold;
 `;
 
 const Ul = styled.ul`
@@ -36,11 +39,9 @@ const Nav = styled.nav`
   margin-right: 2rem;
 `;
 
-const HomeLink: ILink = { href: "/", text: "Home" };
-
 const AboutLink: ILink = { href: "/about", text: "About" };
 
-const links: ILink[] = [HomeLink, AboutLink];
+const links: ILink[] = [AboutLink];
 
 const Navbar = () => (
   <Header>

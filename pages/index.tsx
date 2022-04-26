@@ -6,7 +6,6 @@ const CenteredText = styled.p`
   margin-block: 0px;
   margin-top: 2rem;
   font-size: 1rem;
-  font-weight: bold;
 `;
 
 const TextWrapper = styled.div`
@@ -15,7 +14,7 @@ const TextWrapper = styled.div`
 `;
 
 const TextContainer = styled.div`
-  max-width: 44rem;
+  max-width: max(44rem, 80%);
 `;
 
 const millisecondsSecond = 1000;
