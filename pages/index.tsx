@@ -30,14 +30,20 @@ const getAge = (dateString: string) => {
   return Math.floor(millisecondsDiff / millisecondsYear);
 };
 
+const WavingHand = styled.span`
+  @media (prefers-color-scheme: light) {
+    filter: contrast(0.5)
+  }
+`;
+
 const Home: NextPage = () => {
   return (
     <TextWrapper>
       <TextContainer>
         <CenteredText>
-          Hi! 👋 I'm Alan Marino, a {getAge("1994-08-07")}-year-old Argentinian
-          software developer, graduated at National University of Quilmes and
-          recently based in Italy.
+          Hi! <WavingHand>👋</WavingHand> I'm Alan Marino, a {getAge("1994-08-07")}-year-old
+          Argentinian software developer, graduated at National University of
+          Quilmes and recently based in Italy.
           <br />
           <br />
           I started my career working as a Fullstack developer using JAVA and

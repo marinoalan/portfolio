@@ -38,9 +38,9 @@ const GlobalStyle = createGlobalStyle`
     }
     
     @media (prefers-color-scheme: light) {
-      --backgroundColor: #48b1bf;
+      --backgroundColor: #7addac;
       --fontColor: #080808;
-      --lineColor: #00ff00;
+      --lineColor: #25b439;
       --boxShadowColor: #00000070;
     }
   }
@@ -54,25 +54,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     margin: 0px;
     color: var(--fontColor);
-
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--backgroundColor);
-    }
-    
-    @media (prefers-color-scheme: light) {
-      background: linear-gradient(90deg, var(--backgroundColor), #6be194d1 );
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
-      @keyframes gradient {
-        0%, 100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-      }
-    }
-    
+    background-color: var(--backgroundColor);
   }
 `;
 
@@ -133,7 +115,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/manifest.json" />
         <meta
           name="theme-color"
-          content="#48b1bf"
+          content="#7addac"
           media="(prefers-color-scheme: light)"
         />
         <meta
