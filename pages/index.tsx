@@ -6,6 +6,11 @@ const CenteredText = styled.p`
   margin-block: 0px;
   margin-top: 2rem;
   font-size: 1rem;
+  font-weight: bold;
+  
+  @media (prefers-color-scheme: light) {
+    color: #424141;
+  }
 `;
 
 const TextWrapper = styled.div`
@@ -32,7 +37,7 @@ const getAge = (dateString: string) => {
 
 const WavingHand = styled.span`
   @media (prefers-color-scheme: light) {
-    filter: contrast(0.5)
+    filter: contrast(0.5);
   }
 `;
 
@@ -41,9 +46,10 @@ const Home: NextPage = () => {
     <TextWrapper>
       <TextContainer>
         <CenteredText>
-          Hi! <WavingHand>👋</WavingHand> I'm Alan Marino, a {getAge("1994-08-07")}-year-old
-          Argentinian software developer, graduated at National University of
-          Quilmes and recently based in Italy.
+          Hi! <WavingHand>👋</WavingHand> I'm Alan, a{" "}
+          {getAge("1994-08-07")}-year-old Argentinian 🇦🇷 software developer,
+          graduated at National University of Quilmes and recently based in
+          Italy 🇮🇹.
           <br />
           <br />
           I started my career working as a Fullstack developer using JAVA and
