@@ -12,6 +12,16 @@ const NavbarLogoContainer = styled.div`
 const Span = styled.span`
   position: relative;
 
+  @media (prefers-color-scheme: dark) {
+    --textShadow: #d84315;
+  }
+  
+  @media (prefers-color-scheme: light) {
+    --textShadow: #ffe9e9;
+  }
+  
+  text-shadow: 0.1em 0.1em var(--textShadow);
+
   &:after {
     content: "";
     display: block;
