@@ -13,7 +13,7 @@ const CenteredText = styled.p`
     color: #424141;
   }
 
-  @media (prefers-color-scheme: light) {
+  @media (prefers-color-scheme: dark) {
     color: #3aff3a;
   }
 `;
