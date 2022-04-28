@@ -39,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
     
     @media (prefers-color-scheme: light) {
       --backgroundColor: #7addac;
-      --fontColor: #080808;
+      --fontColor: #2a2a2a;
       --lineColor: #ff726d;
       --boxShadowColor: #00000070;
     }
