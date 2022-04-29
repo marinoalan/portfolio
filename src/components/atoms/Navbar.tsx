@@ -22,11 +22,20 @@ const Header = styled.header`
   position: sticky;
   top: 0px;
   z-index: 1000;
-  box-shadow: 0px 10px 4px -7px var(--boxShadowColor);
   background-color: var(--backgroundColor);
   min-height: 6rem;
   font-size: 1.1rem;
   font-weight: bold;
+
+  /* box shadow line */
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    height: 7px;
+    width: 100%;
+    background: linear-gradient(to bottom, var(--boxShadowColor), #00000000);
+  }
 `;
 
 const Ul = styled.ul`
