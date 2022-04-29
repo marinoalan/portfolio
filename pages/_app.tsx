@@ -55,6 +55,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
     color: var(--fontColor);
     background-color: var(--backgroundColor);
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
 `;
 
