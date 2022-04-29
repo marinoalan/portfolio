@@ -22,7 +22,7 @@ const Header = styled.header`
   position: sticky;
   top: 0px;
   z-index: 1000;
-  box-shadow: 0 4px 4px -2px var(--boxShadowColor);
+  box-shadow: 0px 10px 4px -7px var(--boxShadowColor);
   background-color: var(--backgroundColor);
   min-height: 6rem;
   font-size: 1.1rem;
