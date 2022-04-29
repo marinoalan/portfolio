@@ -54,8 +54,20 @@ const WavingHand = styled.span`
 const CustomLink = styled.a`
   background-color: #832c1b;
   text-decoration: unset;
-  white-space: nowrap;
   color: #f3f3f3;
+  transition: all 0.7s;
+
+  &:hover {
+    @media (prefers-color-scheme: light) {
+      background-color: #424141;
+      color: #ff5a5a;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #ababab;
+      color: #9b321d;
+    }
+  }
 `;
 
 const FlagSpan = styled.span`
