@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import NextLink from "next/link";
 import styled from "styled-components";
 
 const CenteredText = styled.p`
@@ -50,14 +51,56 @@ const WavingHand = styled.span`
   }
 `;
 
+const CustomLink = styled.a`
+  background-color: #832c1b;
+  text-decoration: unset;
+  white-space: nowrap;
+  color: #f3f3f3;
+`;
+
+const FlagSpan = styled.span`
+  @media (prefers-color-scheme: dark) {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+  }
+`;
+
+const ArgentinaFlagText = styled(FlagSpan)`
+  @media (prefers-color-scheme: dark) {
+    background: radial-gradient(circle at center, white, #73abde 50%);
+  }
+`;
+
+const ItalianFlagText = styled(FlagSpan)`
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(to right, #0c9246, #ffffff, #c32e29);
+  }
+`;
+
 const Home: NextPage = () => {
   return (
     <TextWrapper>
       <TextContainer>
         <CenteredText>
           Hi! <WavingHand>👋</WavingHand> I'm Alan, a {getAge("1994-08-07")}
-          -year-old <CountryFlag>Argentinian 🇦🇷</CountryFlag> software developer, graduated at National
-          University of Quilmes and recently based in <CountryFlag>Italy 🇮🇹</CountryFlag>.
+          -year-old{" "}
+          <CountryFlag>
+            <ArgentinaFlagText>Argentinian</ArgentinaFlagText> 🇦🇷
+          </CountryFlag>{" "}
+          software developer, graduated at{" "}
+          <NextLink
+            href="http://www.unq.edu.ar/english/sections/159-the-university"
+            passHref
+          >
+            <CustomLink target="_blank" rel="noopener noreferrer">
+              National University of Quilmes
+            </CustomLink>
+          </NextLink>{" "}
+          and recently based in{" "}
+          <CountryFlag>
+            <ItalianFlagText>Italy</ItalianFlagText> 🇮🇹
+          </CountryFlag>
+          .
           <br />
           <br />
           I started my career working as a Fullstack developer using JAVA and
