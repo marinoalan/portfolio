@@ -17,14 +17,15 @@ const ALink = styled.a`
   @media (max-width: 35em) {
     @media (prefers-color-scheme: light) {
       color: white;
+      background-color: var(--fontColor);
     }
 
     @media (prefers-color-scheme: dark) {
-      color: #42d54a;
+      color: var(--backgroundColor);
+      background-color: #42d54a;
     }
 
     padding: 1.5rem 0;
-    background-color: var(--fontColor);
     width: 100%;
     align-items: center;
     justify-content: center;
