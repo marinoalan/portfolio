@@ -15,11 +15,11 @@ const Span = styled.span`
   @media (prefers-color-scheme: dark) {
     --textShadow: #d84315;
   }
-  
+
   @media (prefers-color-scheme: light) {
     --textShadow: #ffe9e9;
   }
-  
+
   text-shadow: 0.1em 0.1em var(--textShadow);
 
   &:after {
@@ -56,8 +56,8 @@ const LinkContainer = styled.div`
   }
 `;
 
-const NavbarLogo = () => (
-  <LinkContainer>
+const NavbarLogo = ({ className }: { className?: string }) => (
+  <LinkContainer className={className}>
     <Link href="/">
       <a>
         <NavbarLogoContainer>
