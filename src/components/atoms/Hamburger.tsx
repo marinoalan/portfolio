@@ -110,10 +110,7 @@ const Hamburger = ({
   onClick: () => void;
 }) => {
   return (
-    <Button
-      className={className}
-      onClick={onClick}
-    >
+    <Button className={className} onClick={onClick}>
       <HamburgerContainer>
         <HamburgerBox>
           <HamburgerInner isActive={isActive} />

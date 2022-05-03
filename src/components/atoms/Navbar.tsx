@@ -35,9 +35,7 @@ const ALink = styled.a`
 
 const Link = ({ href, text, onClick }: ILink & { onClick: () => void }) => (
   <NextLink href={href} passHref>
-    <ALink onClick={onClick}>
-      {text}
-    </ALink>
+    <ALink onClick={onClick}>{text}</ALink>
   </NextLink>
 );
 
@@ -188,7 +186,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 {...link}
-                onClick={() => setActiveHamburger(!activeHamburger)}
+                onClick={() => setActiveHamburger(false)}
               />
             </Li>
           ))}
