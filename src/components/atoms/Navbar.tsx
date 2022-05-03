@@ -12,9 +12,29 @@ interface ILink {
   homeLink?: boolean;
 }
 
+const ALink = styled.a`
+  cursor: pointer;
+  @media (max-width: 35em) {
+    @media (prefers-color-scheme: light) {
+      color: white;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      color: var(--backgroundColor);
+    }
+
+    padding: 1.5rem 0;
+    background-color: var(--fontColor);
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+`;
+
 const Link = ({ href, text, onClick }: ILink & { onClick: () => void }) => (
   <NextLink href={href}>
-    <a onClick={onClick}>{text}</a>
+    <ALink onClick={onClick}>{text}</ALink>
   </NextLink>
 );
 
@@ -51,7 +71,6 @@ const Ul = styled.ul`
     isActive &&
     `display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   height: 100%;
   margin: 0px;
   align-items: center;
@@ -74,7 +93,16 @@ const Nav = styled.nav`
         top: 6rem;
         height: calc(100vh - 6rem);
         width: 100%;
-        background: #ffffff1a;
+
+        @media (prefers-color-scheme: light) {
+          background: #2a2a2ad1;
+        }
+        
+
+        @media (prefers-color-scheme: dark) {
+          background: #919191d1;
+        }
+        
         backdrop-filter: blur(0.3rem);
       }
       `}
@@ -106,9 +134,22 @@ const Li = styled.li`
     `
     display: none;
     @media (max-width: 35em) {
-      display: initial;
+      display: flex;
     }
   `}
+
+  @media (max-width: 35em) {
+    width: 100%;
+    display: flex;
+
+    @media (prefers-color-scheme: light) {
+      border-bottom: 2px solid white;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      border-bottom: 2px solid var(--backgroundColor);
+    }
+  }
 `;
 
 const Navbar = () => {
