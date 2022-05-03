@@ -20,7 +20,7 @@ const ALink = styled.a`
     }
 
     @media (prefers-color-scheme: dark) {
-      color: var(--backgroundColor);
+      color: #42d54a;
     }
 
     padding: 1.5rem 0;
@@ -71,7 +71,6 @@ const Ul = styled.ul`
     isActive &&
     `display: flex;
   flex-direction: column;
-  height: 100%;
   margin: 0px;
   align-items: center;
   padding: 0px;`}
@@ -100,7 +99,7 @@ const Nav = styled.nav`
         
 
         @media (prefers-color-scheme: dark) {
-          background: #919191d1;
+          background: #565656d1;
         }
         
         backdrop-filter: blur(0.3rem);
