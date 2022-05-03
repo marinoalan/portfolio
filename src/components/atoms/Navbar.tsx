@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import NextLink from "next/link";
 import NavbarLogo from "./NavbarLogo";
 import Hamburger from "./Hamburger";
@@ -34,8 +34,10 @@ const ALink = styled.a`
 `;
 
 const Link = ({ href, text, onClick }: ILink & { onClick: () => void }) => (
-  <NextLink href={href}>
-    <ALink onClick={onClick}>{text}</ALink>
+  <NextLink href={href} passHref>
+    <ALink onClick={onClick}>
+      {text}
+    </ALink>
   </NextLink>
 );
 
@@ -77,6 +79,20 @@ const Ul = styled.ul`
   padding: 0px;`}
 `;
 
+const GlobalStyle = createGlobalStyle`
+${({ isActive }: { isActive: boolean }) =>
+  isActive &&
+  `
+  @media (max-width: 35em) {
+    body {
+      position: fixed;
+      overflow-y: scroll;
+      width: 100%;
+    }
+  }
+  `}
+`;
+
 const Nav = styled.nav`
   @media (max-width: 35em) {
     ${({ isActive }: { isActive: boolean }) => !isActive && "display: none;"}
@@ -110,6 +126,9 @@ const Nav = styled.nav`
 
 const HamburgerNavbar = styled(Hamburger)`
   display: none;
+  &:focus-visible {
+    outline: -webkit-focus-ring-color auto 1px;
+  }
   margin-left: calc(2rem - 24px);
   @media (max-width: 35em) {
     display: initial;
@@ -161,6 +180,7 @@ const Navbar = () => {
         isActive={activeHamburger}
         onClick={() => setActiveHamburger(!activeHamburger)}
       />
+      <GlobalStyle isActive={activeHamburger} />
       <Nav isActive={activeHamburger}>
         <Ul isActive={activeHamburger}>
           {links.map(({ homeLink, ...link }: ILink, index) => (
