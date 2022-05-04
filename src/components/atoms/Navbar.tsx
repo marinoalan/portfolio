@@ -33,9 +33,9 @@ const ALink = styled.a`
   }
 `;
 
-const Link = ({ href, text, onClick }: ILink & { onClick: () => void }) => (
+const Link = ({ href, text }: ILink) => (
   <NextLink href={href} passHref>
-    <ALink onClick={onClick}>{text}</ALink>
+    <ALink>{text}</ALink>
   </NextLink>
 );
 
@@ -179,15 +179,11 @@ const Navbar = () => {
         onClick={() => setActiveHamburger(!activeHamburger)}
       />
       <GlobalStyle isActive={activeHamburger} />
-      <Nav isActive={activeHamburger}>
+      <Nav isActive={activeHamburger} onClick={() => setActiveHamburger(false)}>
         <Ul isActive={activeHamburger}>
           {links.map(({ homeLink, ...link }: ILink, index) => (
-            <Li homeLink={homeLink}>
-              <Link
-                key={index}
-                {...link}
-                onClick={() => setActiveHamburger(false)}
-              />
+            <Li key={index} homeLink={homeLink}>
+              <Link {...link} />
             </Li>
           ))}
         </Ul>
