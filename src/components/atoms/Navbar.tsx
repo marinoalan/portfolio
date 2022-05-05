@@ -14,14 +14,16 @@ interface ILink {
 
 const ALink = styled.a`
   cursor: pointer;
+  text-decoration: unset;
+  color: var(--fontColor);
+  
   @media (max-width: 35em) {
+    color: var(--backgroundColor);
     @media (prefers-color-scheme: light) {
-      color: white;
       background-color: var(--fontColor);
     }
 
     @media (prefers-color-scheme: dark) {
-      color: var(--backgroundColor);
       background-color: #42d54a;
     }
 
