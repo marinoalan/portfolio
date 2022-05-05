@@ -113,7 +113,19 @@ const Home: NextPage = () => {
             <ItalianFlagText>Italy</ItalianFlagText> 🇮🇹
           </CountryFlag>
           .
-          <br />
+        </CenteredText>
+        <CenteredText>
+          I oriented my career towards building frontend projects using React as
+          my library for building user interfaces. I first started programming
+          with Javascript and then with Typescript, where I found my passion.
+        </CenteredText>
+        <CenteredText>
+          In my spare time i enjoy learning and staying up to date on new
+          frameworks, libraries and technologies. So i like to read books, watch
+          videos and articles from different blogs and social networks to see
+          how other developers implement efficient solutions.
+        </CenteredText>
+        {/* <br />
           <br />
           I started my career working as a Fullstack developer using JAVA and
           Angular for backend and frontend side, respectively.
@@ -125,8 +137,7 @@ const Home: NextPage = () => {
           <br />
           Consequently i got a new job as a Frontend developer using frameworks,
           libraries and databases that i never used, it was a great challenge
-          for me to quickly learn Meteor, React, MongoDB, Node, etc.
-        </CenteredText>
+          for me to quickly learn Meteor, React, MongoDB, Node, etc. */}
       </TextContainer>
     </TextWrapper>
   );

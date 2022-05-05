@@ -11,9 +11,8 @@ const ImageContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  height: 30vh;
-  max-height: 30vw;
-  min-height: 11rem;
+  width: min(14rem, 100%);
+  height: min(12rem, 65vw);
 `;
 
 const Image = styled(NextImage)`
@@ -60,13 +59,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Main = styled.main`
-  margin: 2rem 2rem 0rem 2rem;
+  margin: 2rem;
 `;
 
 const ImageShapeBackground = styled.div`
-  width: 30%;
-  max-width: 30vh;
-  min-width: 13rem;
+  width: 100%;
+  height: 100%;
+  position: absolute;
   border-radius: 75% 25% 84% 16% / 85% 51% 49% 15%;
   height: 100%;
 
@@ -81,24 +80,50 @@ const ImageShapeBackground = styled.div`
   background: linear-gradient(to right, var(--imageBackgroundColor), #9e9e9ebd);
 `;
 
+const ImageProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const ImageProfile = styled.div`
+  position: relative;
+  width: 90%;
+  height: 90%;
+`;
+
+const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const ImageWithGradient = () => {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>();
   return (
-    <ImageContainer>
-      {isImageLoaded && <ImageShapeBackground />}
-      <Image
-        src={profileImg}
-        alt="Profile image"
-        placeholder="blur"
-        blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk5uV9CwABZAEUcnMSRQAAAABJRU5ErkJggg==`}
-        layout="fill"
-        objectFit="contain"
-        priority
-        onLoadingComplete={() => {
-          setIsImageLoaded(true);
-        }}
-      />
-    </ImageContainer>
+    <ImageWrapper>
+      <ImageContainer>
+        {isImageLoaded && <ImageShapeBackground />}
+        <ImageProfileContainer>
+          <ImageProfile>
+            <Image
+              src={profileImg}
+              alt="Profile image"
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk5uV9CwABZAEUcnMSRQAAAABJRU5ErkJggg==`}
+              layout="fill"
+              objectFit="contain"
+              priority
+              onLoadingComplete={() => {
+                setIsImageLoaded(true);
+              }}
+            />
+          </ImageProfile>
+        </ImageProfileContainer>
+      </ImageContainer>
+    </ImageWrapper>
   );
 };
 
