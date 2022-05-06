@@ -4,7 +4,7 @@ import NavbarLogo from "./NavbarLogo";
 import Hamburger from "./Hamburger";
 import { useState } from "react";
 
-type IHRef = "/" | "/about" | "/#skills";
+type IHRef = "/" | "/about" | "/#skills" | "/#home";
 
 interface ILink {
   href: IHRef;
@@ -63,8 +63,6 @@ const Header = styled.header`
     width: 100%;
     background: linear-gradient(to bottom, var(--boxShadowColor), #00000000);
   }
-
-  background-color: transparent;
 `;
 
 const Ul = styled.ul`
@@ -126,7 +124,7 @@ const HamburgerNavbar = styled(Hamburger)`
 
 const SkillsLink: ILink = { href: "/#skills", text: "Skills", scroll: false };
 
-const HomeLink: ILink = { href: "/", text: "Home", homeLink: true };
+const HomeLink: ILink = { href: "/#home", text: "Home", homeLink: true };
 
 const links: ILink[] = [HomeLink, SkillsLink];
 

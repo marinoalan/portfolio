@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+    scroll-padding-top: 6rem;
     // scroll-behavior: smooth;
   }
 

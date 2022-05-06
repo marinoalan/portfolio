@@ -202,14 +202,10 @@ const SectionContent = styled.div`
     alignItems};
 `;
 
-const Section = styled.section`
-  background-color: ${({ color }) => color};
-`;
-
 const Home: NextPage = () => {
   return (
     <>
-      <Section color="red">
+      <section id="home">
         <SectionContent alignItems="center">
           <FlexContainer>
             <ImageWithGradient />
@@ -256,12 +252,12 @@ const Home: NextPage = () => {
             </Content>
           </FlexContainer>
         </SectionContent>
-      </Section>
-      <Section color="blue" id="skills">
+      </section>
+      <section id="skills">
         <SectionContent alignItems="baseline">
           <h1>Skills</h1>
         </SectionContent>
-      </Section>
+      </section>
     </>
   );
 };
