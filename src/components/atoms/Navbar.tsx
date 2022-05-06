@@ -4,19 +4,20 @@ import NavbarLogo from "./NavbarLogo";
 import Hamburger from "./Hamburger";
 import { useState } from "react";
 
-type IHRef = "/" | "/about";
+type IHRef = "/" | "/about" | "/#skills";
 
 interface ILink {
   href: IHRef;
   text: string;
   homeLink?: boolean;
+  scroll?: boolean;
 }
 
 const ALink = styled.a`
   cursor: pointer;
   text-decoration: unset;
   color: var(--fontColor);
-  
+
   @media (max-width: 35em) {
     color: var(--backgroundColor);
     @media (prefers-color-scheme: light) {
@@ -35,8 +36,8 @@ const ALink = styled.a`
   }
 `;
 
-const Link = ({ href, text }: ILink) => (
-  <NextLink href={href} passHref>
+const Link = ({ href, text, ...rest }: ILink) => (
+  <NextLink href={href} {...rest} passHref>
     <ALink>{text}</ALink>
   </NextLink>
 );
@@ -77,20 +78,6 @@ const Ul = styled.ul`
   margin: 0px;
   align-items: center;
   padding: 0px;`}
-`;
-
-const GlobalStyle = createGlobalStyle`
-${({ isActive }: { isActive: boolean }) =>
-  isActive &&
-  `
-  @media (max-width: 35em) {
-    body {
-      position: fixed;
-      overflow-y: scroll;
-      width: 100%;
-    }
-  }
-  `}
 `;
 
 const Nav = styled.nav`
@@ -135,11 +122,11 @@ const HamburgerNavbar = styled(Hamburger)`
   }
 `;
 
-const AboutLink: ILink = { href: "/about", text: "About" };
+const SkillsLink: ILink = { href: "/#skills", text: "Skills", scroll: false };
 
 const HomeLink: ILink = { href: "/", text: "Home", homeLink: true };
 
-const links: ILink[] = [HomeLink, AboutLink];
+const links: ILink[] = [HomeLink, SkillsLink];
 
 const ResponsiveNavbarLogo = styled(NavbarLogo)`
   @media (max-width: 35em) {
@@ -180,7 +167,6 @@ const Navbar = () => {
         isActive={activeHamburger}
         onClick={() => setActiveHamburger(!activeHamburger)}
       />
-      <GlobalStyle isActive={activeHamburger} />
       <Nav isActive={activeHamburger} onClick={() => setActiveHamburger(false)}>
         <Ul isActive={activeHamburger}>
           {links.map(({ homeLink, ...link }: ILink, index) => (

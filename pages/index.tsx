@@ -1,6 +1,9 @@
 import type { NextPage } from "next";
 import NextLink from "next/link";
 import styled from "styled-components";
+import NextImage from "next/image";
+import profileImg from "../public/profile-img.webp";
+import { useState } from "react";
 
 const CenteredText = styled.p`
   text-align: center;
@@ -91,57 +94,171 @@ const ItalianFlagText = styled(FlagSpan)`
   }
 `;
 
+const ImageContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: min(14rem, 100%);
+  height: min(12rem, 65vw);
+`;
+
+const Image = styled(NextImage)`
+  max-width: 100% !important;
+  width: unset !important;
+  min-width: unset !important;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+`;
+
+const ImageShapeBackground = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 75% 25% 84% 16% / 85% 51% 49% 15%;
+  height: 100%;
+
+  @media (prefers-color-scheme: dark) {
+    --imageBackgroundColor: var(--fontColor);
+  }
+
+  @media (prefers-color-scheme: light) {
+    --imageBackgroundColor: #152b2e;
+  }
+
+  background: linear-gradient(to right, var(--imageBackgroundColor), #9e9e9ebd);
+`;
+
+const ImageProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const ImageProfile = styled.div`
+  position: relative;
+  width: 90%;
+  height: 90%;
+`;
+
+const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 20rem;
+  flex-grow: 1;
+`;
+
+const ImageWithGradient = () => {
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>();
+  return (
+    <ImageWrapper>
+      <ImageContainer>
+        {isImageLoaded && <ImageShapeBackground />}
+        <ImageProfileContainer>
+          <ImageProfile>
+            <Image
+              src={profileImg}
+              alt="Profile image"
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk5uV9CwABZAEUcnMSRQAAAABJRU5ErkJggg==`}
+              layout="fill"
+              objectFit="contain"
+              priority
+              onLoadingComplete={() => {
+                setIsImageLoaded(true);
+              }}
+            />
+          </ImageProfile>
+        </ImageProfileContainer>
+      </ImageContainer>
+    </ImageWrapper>
+  );
+};
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 1rem;
+`;
+
+const Content = styled.div`
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: 60%;
+  align-items: center;
+  display: flex;
+`;
+
+const SectionContent = styled.div`
+  min-height: calc(100vh - 6rem);
+  display: flex;
+  align-items: ${({ alignItems }: { alignItems: "center" | "baseline" }) =>
+    alignItems};
+`;
+
 const Home: NextPage = () => {
   return (
-    <TextWrapper>
-      <TextContainer>
-        <CenteredText>
-          Hi! <WavingHand>👋</WavingHand> I'm Alan, a {getAge("1994-08-07")}
-          -year-old{" "}
-          <CountryFlag>
-            <ArgentinaFlagText>Argentinian</ArgentinaFlagText> 🇦🇷
-          </CountryFlag>{" "}
-          software developer, graduated at{" "}
-          <NextLink
-            href="http://www.unq.edu.ar/english/sections/159-the-university"
-            passHref
-          >
-            <CustomLink target="_blank" rel="noopener noreferrer">
-              National University of Quilmes
-            </CustomLink>
-          </NextLink>{" "}
-          and recently based in{" "}
-          <CountryFlag>
-            <ItalianFlagText>Italy</ItalianFlagText> 🇮🇹
-          </CountryFlag>
-          .
-        </CenteredText>
-        <CenteredText>
-          I oriented my career towards building frontend projects using React as
-          my library for building user interfaces. I first started programming
-          with Javascript and then with Typescript, where I found my passion.
-        </CenteredText>
-        <CenteredText>
-          In my spare time i enjoy learning and staying up to date on new
-          frameworks, libraries and technologies. So i like to read books, watch
-          videos and articles from different blogs and social networks to see
-          how other developers implement efficient solutions.
-        </CenteredText>
-        {/* <br />
-          <br />
-          I started my career working as a Fullstack developer using JAVA and
-          Angular for backend and frontend side, respectively.
-          <br />
-          <br />
-          In that experience i realized that i enjoyed coding and building
-          frontend-oriented projects.
-          <br />
-          <br />
-          Consequently i got a new job as a Frontend developer using frameworks,
-          libraries and databases that i never used, it was a great challenge
-          for me to quickly learn Meteor, React, MongoDB, Node, etc. */}
-      </TextContainer>
-    </TextWrapper>
+    <>
+      <section>
+        <SectionContent alignItems="center">
+          <FlexContainer>
+            <ImageWithGradient />
+            <Content>
+              <TextWrapper>
+                <TextContainer>
+                  <CenteredText>
+                    Hi! <WavingHand>👋</WavingHand> I'm Alan, a{" "}
+                    {getAge("1994-08-07")}
+                    -year-old{" "}
+                    <CountryFlag>
+                      <ArgentinaFlagText>Argentinian</ArgentinaFlagText> 🇦🇷
+                    </CountryFlag>{" "}
+                    software developer, graduated at{" "}
+                    <NextLink
+                      href="http://www.unq.edu.ar/english/sections/159-the-university"
+                      passHref
+                    >
+                      <CustomLink target="_blank" rel="noopener noreferrer">
+                        National University of Quilmes
+                      </CustomLink>
+                    </NextLink>{" "}
+                    and recently based in{" "}
+                    <CountryFlag>
+                      <ItalianFlagText>Italy</ItalianFlagText> 🇮🇹
+                    </CountryFlag>
+                    .
+                  </CenteredText>
+                  <CenteredText>
+                    I oriented my career towards building frontend projects
+                    using React as my library for building user interfaces. I
+                    first started programming with Javascript and then with
+                    Typescript, where I found my passion.
+                  </CenteredText>
+                  <CenteredText>
+                    In my spare time i enjoy learning and staying up to date on
+                    new frameworks, libraries and technologies. So i like to
+                    read books, watch videos and articles from different blogs
+                    and social networks to see how other developers implement
+                    efficient solutions.
+                  </CenteredText>
+                </TextContainer>
+              </TextWrapper>
+            </Content>
+          </FlexContainer>
+        </SectionContent>
+      </section>
+      <section id="skills">
+        <SectionContent alignItems="baseline">
+          <h1>Skills</h1>
+        </SectionContent>
+      </section>
+    </>
   );
 };
 
