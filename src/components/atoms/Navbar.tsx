@@ -63,6 +63,8 @@ const Header = styled.header`
     width: 100%;
     background: linear-gradient(to bottom, var(--boxShadowColor), #00000000);
   }
+
+  background-color: transparent;
 `;
 
 const Ul = styled.ul`
