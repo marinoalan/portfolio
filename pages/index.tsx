@@ -5,7 +5,6 @@ import styled from "styled-components";
 const CenteredText = styled.p`
   text-align: center;
   margin-block: 0px;
-  margin-top: 2rem;
   font-size: 1rem;
   font-weight: bold;
   line-height: 1.4rem;
@@ -26,6 +25,9 @@ const TextWrapper = styled.div`
 
 const TextContainer = styled.div`
   max-width: max(44rem, 80%);
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
 `;
 
 const millisecondsSecond = 1000;

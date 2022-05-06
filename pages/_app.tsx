@@ -132,7 +132,7 @@ const ImageWithGradient = () => {
 const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
 `;
 
 const Content = styled.div`
