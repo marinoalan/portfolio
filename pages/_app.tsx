@@ -98,6 +98,8 @@ const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-basis: 20rem;
+  flex-grow: 1;
 `;
 
 const ImageWithGradient = () => {
@@ -127,6 +129,18 @@ const ImageWithGradient = () => {
   );
 };
 
+const FlexContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+const Content = styled.div`
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: 60%;
+`;
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -154,8 +168,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <Navbar />
       <Main>
-        <ImageWithGradient />
-        <Component {...pageProps} />
+        <FlexContainer>
+          <ImageWithGradient />
+          <Content>
+            <Component {...pageProps} />
+          </Content>
+        </FlexContainer>
       </Main>
     </>
   );
