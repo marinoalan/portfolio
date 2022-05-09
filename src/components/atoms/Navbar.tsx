@@ -2,7 +2,8 @@ import styled, { createGlobalStyle } from "styled-components";
 import NextLink from "next/link";
 import NavbarLogo from "./NavbarLogo";
 import Hamburger from "./Hamburger";
-import { useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import useMediaQuery from "hooks/useMediaQuery";
 
 type IHRef = "/" | "/about" | "/#skills" | "/#home";
 
@@ -71,24 +72,81 @@ const Ul = styled.ul`
     color: var(--fontColor) !important;
   }
 
-  ${({ isActive }: { isActive: boolean }) =>
-    isActive &&
-    `display: flex;
-  flex-direction: column;
-  margin: 0px;
-  align-items: center;
-  padding: 0px;`}
+  ${({
+    isActive,
+    closingEffect,
+  }: {
+    isActive: boolean;
+    closingEffect?: boolean;
+  }) =>
+    (isActive || closingEffect) &&
+    `
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    align-items: center;
+    padding: 0px;
+  `}
 `;
 
-const Nav = styled.nav`
-  @media (max-width: 35em) {
-    ${({ isActive }: { isActive: boolean }) => !isActive && "display: none;"}
-  }
-
+const Nav = styled(
+  ({
+    isActive,
+    closingEffect,
+    ...props
+  }: {
+    isActive: boolean;
+    closingEffect?: boolean;
+    [props: string]: any;
+  }) => <nav {...props} />
+)`
   margin-right: 2rem;
 
-  ${({ isActive }: { isActive: boolean }) =>
-    isActive &&
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-6rem);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translate(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-6rem);
+    }
+  }
+
+  @media (max-width: 35em) {
+    ${({
+      isActive,
+      closingEffect,
+    }: {
+      isActive?: boolean;
+      closingEffect?: boolean;
+    }) => !isActive && !closingEffect && "display: none;"}
+  }
+
+  @media (max-width: 35em) {
+    ${({ closingEffect }: { closingEffect?: boolean }) =>
+      closingEffect && "animation: fadeOut 0.5s forwards;"}
+  }
+
+  ${({
+    isActive,
+    closingEffect,
+  }: {
+    isActive: boolean;
+    closingEffect?: boolean;
+  }) =>
+    (isActive || closingEffect) &&
     `
       @media (max-width: 35em) {
         position: fixed;
@@ -96,6 +154,9 @@ const Nav = styled.nav`
         top: 6rem;
         height: calc(100vh - 6rem);
         width: 100%;
+
+        ${!closingEffect && "animation: fadeIn 0.5s forwards;"}
+        
 
         @media (prefers-color-scheme: light) {
           background: #2a2a2ad1;
@@ -158,24 +219,91 @@ const Li = styled.li`
   }
 `;
 
+const Navigation = ({
+  isActive,
+  setActiveHamburger,
+  onClick,
+  isSmallDevice,
+  children,
+}: {
+  isActive: boolean;
+  setActiveHamburger: (isActive: boolean) => void;
+  onClick: () => void;
+  isSmallDevice: boolean;
+  children: any;
+}) => {
+  const [closingEffect, setClosingEffect] = useState<boolean>(false);
+
+  return (
+    <>
+      <HamburgerNavbar
+        isActive={isActive}
+        onClick={() => {
+          if (isActive) {
+            setClosingEffect(true);
+            setActiveHamburger(false)
+            setTimeout(() => {
+              setClosingEffect(false);
+            }, 500);
+          } else {
+            setActiveHamburger(true);
+          }
+        }}
+      />
+      <Nav
+        isActive={isActive}
+        closingEffect={closingEffect}
+        onClick={() => {
+          if (isSmallDevice) {
+            setClosingEffect(true);
+            onClick();
+            setTimeout(() => {
+              setClosingEffect(false);
+            }, 500);
+          }
+        }}
+      >
+        <Ul isActive={isActive} closingEffect={closingEffect}>
+          {children}
+        </Ul>
+      </Nav>
+    </>
+  );
+};
+
 const Navbar = () => {
   const [activeHamburger, setActiveHamburger] = useState<boolean>(false);
+
+  const matches = useMediaQuery("(max-width: 35em)");
+
+  useEffect(() => {
+    if (activeHamburger && !matches) {
+      setActiveHamburger(false);
+    }
+  }, [activeHamburger, matches]);
+
+  console.log(`ENTRO EN LA MEDIA QUERY? ${matches ? "SÍ" : "NO"}`);
+
   return (
     <Header>
       <ResponsiveNavbarLogo />
-      <HamburgerNavbar
+
+      <Navigation
+        setActiveHamburger={setActiveHamburger}
         isActive={activeHamburger}
-        onClick={() => setActiveHamburger(!activeHamburger)}
-      />
-      <Nav isActive={activeHamburger} onClick={() => setActiveHamburger(false)}>
-        <Ul isActive={activeHamburger}>
-          {links.map(({ homeLink, ...link }: ILink, index) => (
-            <Li key={index} homeLink={homeLink}>
-              <Link {...link} />
-            </Li>
-          ))}
-        </Ul>
-      </Nav>
+        isSmallDevice={matches}
+        onClick={() => {
+          if (matches) {
+            setActiveHamburger(false);
+          }
+        }}
+      >
+        {links.map(({ homeLink, ...link }: ILink, index) => (
+          <Li key={index} homeLink={homeLink}>
+            <Link {...link} />
+          </Li>
+        ))}
+      </Navigation>
     </Header>
   );
 };
