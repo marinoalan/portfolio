@@ -1,8 +1,8 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import NextLink from "next/link";
 import NavbarLogo from "./NavbarLogo";
 import Hamburger from "./Hamburger";
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
 
 type IHRef = "/" | "/about" | "/#skills" | "/#home";
@@ -72,22 +72,38 @@ const Ul = styled.ul`
     color: var(--fontColor) !important;
   }
 
-  ${({
-    isActive,
-    closingEffect,
-  }: {
-    isActive: boolean;
-    closingEffect?: boolean;
-  }) =>
-    (isActive || closingEffect) &&
+  ${({ isActive }: { isActive: boolean }) =>
+    isActive &&
     `
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-    align-items: center;
-    padding: 0px;
-  `}
+      display: flex;
+      flex-direction: column;
+      margin: 0px;
+      align-items: center;
+      padding: 0px;
+    `
+  }
 `;
+
+const fadeTranslateY = "-6rem";
+
+const fadeKeyframe = (fadeIn: boolean) => keyframes`
+  ${fadeIn ? "from" : "to"} {
+    opacity: 0;
+    transform: translateY(${fadeTranslateY});
+  }
+  ${fadeIn ? "to" : "from"} {
+    opacity: 1;
+    transform: translate(0);
+  }
+`;
+
+const fadeAnimation = (fadeIn: boolean) => css`
+  animation: ${fadeKeyframe(fadeIn)} 0.4s forwards;
+`;
+
+const fadeInAnimation = fadeAnimation(true);
+
+const fadeOutAnimation = fadeAnimation(false);
 
 const Nav = styled(
   ({
@@ -102,28 +118,6 @@ const Nav = styled(
 )`
   margin-right: 2rem;
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-6rem);
-    }
-    to {
-      opacity: 1;
-      transform: translate(0);
-    }
-  }
-
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-      transform: translate(0);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(-6rem);
-    }
-  }
-
   @media (max-width: 35em) {
     ${({
       isActive,
@@ -136,7 +130,15 @@ const Nav = styled(
 
   @media (max-width: 35em) {
     ${({ closingEffect }: { closingEffect?: boolean }) =>
-      closingEffect && "animation: fadeOut 0.5s forwards;"}
+      closingEffect && fadeOutAnimation}
+
+    ${({
+      isActive,
+      closingEffect,
+    }: {
+      isActive?: boolean;
+      closingEffect?: boolean;
+    }) => isActive && !closingEffect && fadeInAnimation}
   }
 
   ${({
@@ -154,9 +156,6 @@ const Nav = styled(
         top: 6rem;
         height: calc(100vh - 6rem);
         width: 100%;
-
-        ${!closingEffect && "animation: fadeIn 0.5s forwards;"}
-        
 
         @media (prefers-color-scheme: light) {
           background: #2a2a2ad1;
@@ -234,17 +233,22 @@ const Navigation = ({
 }) => {
   const [closingEffect, setClosingEffect] = useState<boolean>(false);
 
+  const closeMenu = (action: () => void) => {
+    setClosingEffect(true);
+    action();
+    setTimeout(() => {
+      setClosingEffect(false);
+    }, 400);
+  };
+
   return (
     <>
       <HamburgerNavbar
         isActive={isActive}
         onClick={() => {
           if (isActive) {
-            setClosingEffect(true);
-            setActiveHamburger(false)
-            setTimeout(() => {
-              setClosingEffect(false);
-            }, 500);
+            const action = () => setActiveHamburger(false);
+            closeMenu(action);
           } else {
             setActiveHamburger(true);
           }
@@ -255,17 +259,12 @@ const Navigation = ({
         closingEffect={closingEffect}
         onClick={() => {
           if (isSmallDevice) {
-            setClosingEffect(true);
-            onClick();
-            setTimeout(() => {
-              setClosingEffect(false);
-            }, 500);
+            const action = onClick;
+            closeMenu(action);
           }
         }}
       >
-        <Ul isActive={isActive} closingEffect={closingEffect}>
-          {children}
-        </Ul>
+        <Ul isActive={isActive || closingEffect}>{children}</Ul>
       </Nav>
     </>
   );
@@ -282,12 +281,9 @@ const Navbar = () => {
     }
   }, [activeHamburger, matches]);
 
-  console.log(`ENTRO EN LA MEDIA QUERY? ${matches ? "SÍ" : "NO"}`);
-
   return (
     <Header>
       <ResponsiveNavbarLogo />
-
       <Navigation
         setActiveHamburger={setActiveHamburger}
         isActive={activeHamburger}
