@@ -1,45 +1,46 @@
 import styled from "styled-components";
 
+const TRANSITION_DURATION = ".15s";
+const HAMBURGER_HEIGHT = "1.5rem";
+const BORDER_RADIUS_LINE = "4px";
+
+const CUBIC_BEZIER_INITIAL_ACTIVE_TRANSITION = ".33333,0,.66667,.33333";
+const CUBIC_BEZIER_INITIAL_NOT_ACTIVE_TRANSITION = ".33333,.66667,.66667,1";
+
+const CUBIC_BEZIER_FINAL_ACTIVE_TRANSITION = ".215,.61,.355,1";
+const CUBIC_BEZIER_FINAL_NOT_ACTIVE_TRANSITION = ".55,.055,.675,.19";
+
 const HamburgerContainer = styled.div`
-  font: inherit;
-  display: inline-block;
-  overflow: visible;
-  margin: 0;
-  padding: 15px;
-  cursor: pointer;
+  padding: 0.9375rem;
   transition-timing-function: linear;
-  transition-duration: 0.15s;
+  transition-duration: ${TRANSITION_DURATION};
   transition-property: opacity, filter;
-  text-transform: none;
-  color: inherit;
   border: 0;
-  background-color: transparent;
-  height: 24px;
+  height: ${HAMBURGER_HEIGHT};
 `;
 
 const HamburgerBox = styled.div`
   position: relative;
-  display: inline-block;
   width: 2.5rem;
-  height: 24px;
+  height: ${HAMBURGER_HEIGHT};
 `;
 
 const HamburgerInner = styled.div`
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   width: 2.5rem;
   height: 0.25rem;
 
-  transition-duration: 0.15s;
+  transition-duration: ${TRANSITION_DURATION};
   transition-property: transform;
-  border-radius: 4px;
+  border-radius: ${BORDER_RADIUS_LINE};
   background-color: var(--fontColor);
 
   ${({ isActive }) =>
     isActive
       ? `transition-delay: .22s;
-  transition-timing-function: cubic-bezier(.215,.61,.355,1);
-  transform: translate3d(0,-10px,0) rotate(-45deg);`
+  transition-timing-function: cubic-bezier(${CUBIC_BEZIER_FINAL_ACTIVE_TRANSITION});
+  transform: translate3d(0,-.625rem,0) rotate(-45deg);`
       : `transition-timing-function: ease;`}
 
   &:before,
@@ -48,9 +49,9 @@ const HamburgerInner = styled.div`
     width: 2.5rem;
     height: 0.25rem;
     transition-timing-function: ease;
-    transition-duration: 0.15s;
+    transition-duration: ${TRANSITION_DURATION};
     transition-property: transform;
-    border-radius: 4px;
+    border-radius: ${BORDER_RADIUS_LINE};
     background-color: var(--fontColor);
   }
 
@@ -62,42 +63,46 @@ const HamburgerInner = styled.div`
       isActive
         ? `
             top: 0;
-            transition: top .1s cubic-bezier(.33333,0,.66667,.33333) .16s,transform .13s cubic-bezier(.215,.61,.355,1) .25s;
+            transition: 
+              top .1s cubic-bezier(${CUBIC_BEZIER_INITIAL_ACTIVE_TRANSITION}) .16s,
+              transform .13s cubic-bezier(${CUBIC_BEZIER_FINAL_ACTIVE_TRANSITION}) .25s;
             transform: rotate(-90deg);
         `
         : `
-            top: -10px;
-            transition: top .12s cubic-bezier(.33333,.66667,.66667,1) .2s,transform .13s cubic-bezier(.55,.055,.675,.19);
+            top: -.625rem;
+            transition: 
+              top .12s cubic-bezier(${CUBIC_BEZIER_INITIAL_NOT_ACTIVE_TRANSITION}) .2s,
+              transform .13s cubic-bezier(${CUBIC_BEZIER_FINAL_NOT_ACTIVE_TRANSITION});
     `}
   }
 
   &:after {
     content: "";
     display: block;
-    bottom: -10px;
+    bottom: -0.625rem;
     ${({ isActive }: { isActive: boolean }) =>
       isActive
         ? `
             top: 0;
-            transition: top .2s cubic-bezier(.33333,0,.66667,.33333),opacity .1s linear .22s;
+            transition: 
+              top .2s cubic-bezier(${CUBIC_BEZIER_INITIAL_ACTIVE_TRANSITION}),
+              opacity .1s linear .22s;
             opacity: 0;
         `
         : `
-            top: -20px;
-            transition: top 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1) 0.2s,
-              opacity 0.1s linear;
+            top: -1.25rem;
+            transition: 
+              top .2s cubic-bezier(${CUBIC_BEZIER_INITIAL_NOT_ACTIVE_TRANSITION}) .2s,
+              opacity .1s linear;
     `}
   }
 `;
 
 const Button = styled.button`
   background: none;
-  color: inherit;
+  cursor: pointer;
   border: none;
   padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
 `;
 
 const Hamburger = ({

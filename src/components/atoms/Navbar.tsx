@@ -14,21 +14,33 @@ interface ILink {
   scroll?: boolean;
 }
 
+interface INavbarProps {
+  isActive: boolean;
+  closingEffect?: boolean;
+}
+
+const NAVBAR_HEIGHT = "6rem";
+
+const MAX_WIDTH_FOR_SIDEBAR = "35em";
+
+const HEADER__BOTTOM_LINE_HEIGHT = "7px";
+
 const ALink = styled.a`
   cursor: pointer;
   text-decoration: unset;
   color: var(--fontColor);
 
-  @media (max-width: 35em) {
+  @media (prefers-color-scheme: light) {
+    --linkBackgroundColor: var(--fontColor);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --linkBackgroundColor: #42d54a;
+  }
+
+  @media (max-width: ${MAX_WIDTH_FOR_SIDEBAR}) {
     color: var(--backgroundColor);
-    @media (prefers-color-scheme: light) {
-      background-color: var(--fontColor);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: #42d54a;
-    }
-
+    background-color: var(--linkBackgroundColor);
     padding: 1.5rem 0;
     width: 100%;
     align-items: center;
@@ -48,10 +60,10 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   position: sticky;
-  top: 0px;
+  top: 0;
   z-index: 1000;
   background-color: var(--backgroundColor);
-  min-height: 6rem;
+  min-height: ${NAVBAR_HEIGHT};
   font-size: 1.1rem;
   font-weight: bold;
 
@@ -59,8 +71,8 @@ const Header = styled.header`
   &:after {
     content: "";
     position: absolute;
-    bottom: -7px;
-    height: 7px;
+    bottom: -${HEADER__BOTTOM_LINE_HEIGHT};
+    height: ${HEADER__BOTTOM_LINE_HEIGHT};
     width: 100%;
     background: linear-gradient(to bottom, var(--boxShadowColor), #00000000);
   }
@@ -77,14 +89,13 @@ const Ul = styled.ul`
     `
       display: flex;
       flex-direction: column;
-      margin: 0px;
+      margin: 0;
       align-items: center;
-      padding: 0px;
-    `
-  }
+      padding: 0;
+    `}
 `;
 
-const fadeTranslateY = "-6rem";
+const fadeTranslateY = `-${NAVBAR_HEIGHT}`;
 
 const fadeKeyframe = (fadeIn: boolean) => keyframes`
   ${fadeIn ? "from" : "to"} {
@@ -110,65 +121,39 @@ const Nav = styled(
     isActive,
     closingEffect,
     ...props
-  }: {
-    isActive: boolean;
-    closingEffect?: boolean;
+  }: INavbarProps & {
     [props: string]: any;
   }) => <nav {...props} />
 )`
-  margin-right: 2rem;
+  margin-right: var(--horizontalMargin);
 
-  @media (max-width: 35em) {
-    ${({
-      isActive,
-      closingEffect,
-    }: {
-      isActive?: boolean;
-      closingEffect?: boolean;
-    }) => !isActive && !closingEffect && "display: none;"}
+  @media (prefers-color-scheme: light) {
+    --navBackgroundColor: #2a2a2ad1;
   }
 
-  @media (max-width: 35em) {
-    ${({ closingEffect }: { closingEffect?: boolean }) =>
-      closingEffect && fadeOutAnimation}
-
-    ${({
-      isActive,
-      closingEffect,
-    }: {
-      isActive?: boolean;
-      closingEffect?: boolean;
-    }) => isActive && !closingEffect && fadeInAnimation}
+  @media (prefers-color-scheme: dark) {
+    --navBackgroundColor: #565656d1;
   }
 
-  ${({
-    isActive,
-    closingEffect,
-  }: {
-    isActive: boolean;
-    closingEffect?: boolean;
-  }) =>
-    (isActive || closingEffect) &&
-    `
-      @media (max-width: 35em) {
+  @media (max-width: ${MAX_WIDTH_FOR_SIDEBAR}) {
+    ${({ isActive, closingEffect }: INavbarProps) =>
+      closingEffect ? fadeOutAnimation : isActive && fadeInAnimation}
+  }
+
+  @media (max-width: ${MAX_WIDTH_FOR_SIDEBAR}) {
+    ${({ isActive, closingEffect }: INavbarProps) =>
+      isActive || closingEffect
+        ? `
         position: fixed;
-        margin-right: 0rem;
-        top: 6rem;
-        height: calc(100vh - 6rem);
+        margin-right: 0;
+        top: ${NAVBAR_HEIGHT};
+        height: calc(100vh - ${NAVBAR_HEIGHT});
         width: 100%;
-
-        @media (prefers-color-scheme: light) {
-          background: #2a2a2ad1;
-        }
-        
-
-        @media (prefers-color-scheme: dark) {
-          background: #565656d1;
-        }
-        
+        background: var(--navBackgroundColor);
         backdrop-filter: blur(0.3rem);
-      }
-      `}
+      `
+        : "display: none;"}
+  }
 `;
 
 const HamburgerNavbar = styled(Hamburger)`
@@ -176,8 +161,8 @@ const HamburgerNavbar = styled(Hamburger)`
   &:focus-visible {
     outline: -webkit-focus-ring-color auto 1px;
   }
-  margin-left: calc(2rem - 24px);
-  @media (max-width: 35em) {
+  margin-left: calc(var(--horizontalMargin) - 24px);
+  @media (max-width: ${MAX_WIDTH_FOR_SIDEBAR}) {
     display: initial;
   }
 `;
@@ -189,32 +174,33 @@ const HomeLink: ILink = { href: "/#home", text: "Home", homeLink: true };
 const links: ILink[] = [HomeLink, SkillsLink];
 
 const ResponsiveNavbarLogo = styled(NavbarLogo)`
-  @media (max-width: 35em) {
+  @media (max-width: ${MAX_WIDTH_FOR_SIDEBAR}) {
     display: none;
   }
 `;
 
 const Li = styled.li`
+  @media (prefers-color-scheme: light) {
+    --liBorderBottomColor: white;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --liBorderBottomColor: var(--backgroundColor);
+  }
+
   ${({ homeLink }: { homeLink?: boolean }) =>
     homeLink &&
     `
     display: none;
-    @media (max-width: 35em) {
+    @media (max-width: ${MAX_WIDTH_FOR_SIDEBAR}) {
       display: flex;
     }
   `}
 
-  @media (max-width: 35em) {
+  @media (max-width: ${MAX_WIDTH_FOR_SIDEBAR}) {
     width: 100%;
     display: flex;
-
-    @media (prefers-color-scheme: light) {
-      border-bottom: 2px solid white;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      border-bottom: 2px solid var(--backgroundColor);
-    }
+    border-bottom: 2px solid var(--liBorderBottomColor);
   }
 `;
 
@@ -273,7 +259,7 @@ const Navigation = ({
 const Navbar = () => {
   const [activeHamburger, setActiveHamburger] = useState<boolean>(false);
 
-  const matches = useMediaQuery("(max-width: 35em)");
+  const matches = useMediaQuery(`(max-width: ${MAX_WIDTH_FOR_SIDEBAR})`);
 
   useEffect(() => {
     if (activeHamburger && !matches) {

@@ -30,7 +30,7 @@ const TextContainer = styled.div`
   max-width: max(44rem, 80%);
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
+  row-gap: var(--horizontalMargin);
 `;
 
 const millisecondsSecond = 1000;
@@ -184,7 +184,7 @@ const ImageWithGradient = () => {
 const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem 1rem;
+  gap: var(--horizontalMargin) 1rem;
 `;
 
 const Content = styled.div`

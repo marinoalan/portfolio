@@ -5,6 +5,8 @@ import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
+    --horizontalMargin: 2rem;
+
     @media (prefers-color-scheme: dark) {
       --backgroundColor: #28313b;
       --fontColor: #00ff00;
@@ -36,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Main = styled.main`
-  margin: 0 2rem;
+  margin: 0 var(--horizontalMargin);
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {

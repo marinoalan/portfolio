@@ -20,17 +20,17 @@ const Span = styled.span`
     --textShadow: #ffe9e9;
   }
 
-  text-shadow: 0.1em 0.1em var(--textShadow);
+  text-shadow: .1em .1em var(--textShadow);
 
   &:after {
     content: "";
     display: block;
     position: absolute;
     left: 0;
-    bottom: -0.5rem;
-    width: 0%;
-    border-bottom: 0.3rem solid var(--lineColor);
-    transition: width 0.5s cubic-bezier(0.74, -0.57, 0.33, 1.19);
+    bottom: -.5rem;
+    width: 0;
+    border-bottom: .3rem solid var(--lineColor);
+    transition: width .5s cubic-bezier(.74, -.57, .33, 1.19);
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -49,7 +49,7 @@ const TextLogo = ({ children }: { children: ReactChild }) => (
 );
 
 const LinkContainer = styled.div`
-  margin-left: 2rem;
+  margin-left: var(--horizontalMargin);
   a {
     text-decoration: none;
     color: var(--fontColor) !important;
