@@ -201,8 +201,15 @@ const Content = styled.div`
 const SectionContent = styled.div`
   min-height: calc(100vh - 6rem);
   display: flex;
-  align-items: ${({ alignItems }: { alignItems: "center" | "baseline" }) =>
+  flex-direction: column;
+  justify-content: ${({ alignItems }: { alignItems: "center" | "baseline" }) =>
     alignItems};
+`;
+
+const SectionTitle = styled.h1`
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 0 0 2rem 0;
 `;
 
 const Home: NextPage = () => {
@@ -210,6 +217,7 @@ const Home: NextPage = () => {
     <>
       <section id="home">
         <SectionContent alignItems="center">
+          <SectionTitle>About me</SectionTitle>
           <FlexContainer>
             <ImageWithGradient />
             <Content>
