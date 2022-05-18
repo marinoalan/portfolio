@@ -39,6 +39,12 @@ const GlobalStyle = createGlobalStyle`
 
 const Main = styled.main`
   margin: 0 var(--horizontalMargin);
+  display: flex;
+`;
+
+const MainContent = styled.div`
+  margin: 0 auto;
+  max-width: 80rem;
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -68,7 +74,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <Navbar />
       <Main>
-        <Component {...pageProps} />
+        <MainContent>
+          <Component {...pageProps} />
+        </MainContent>
       </Main>
     </>
   );

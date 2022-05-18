@@ -7,6 +7,10 @@ import { useState } from "react";
 
 const CenteredText = styled.p`
   text-align: center;
+  @media (min-width: 56.5rem) {
+    text-align: left;
+  }
+
   margin-block: 0px;
   font-size: 1rem;
   font-weight: bold;
@@ -27,7 +31,6 @@ const TextWrapper = styled.div`
 `;
 
 const TextContainer = styled.div`
-  max-width: max(44rem, 80%);
   display: flex;
   flex-direction: column;
   row-gap: var(--horizontalMargin);
