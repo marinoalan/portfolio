@@ -199,7 +199,7 @@ const Content = styled.div`
 `;
 
 const SectionContent = styled.div`
-  min-height: calc(100vh - 6rem);
+  min-height: 34rem;
   display: flex;
   flex-direction: column;
   justify-content: ${({ alignItems }: { alignItems: "center" | "baseline" }) =>
@@ -212,10 +212,14 @@ const SectionTitle = styled.h1`
   margin: 0 0 2rem 0;
 `;
 
+const Section = styled.section`
+  margin-top: 2rem;
+`
+
 const Home: NextPage = () => {
   return (
     <>
-      <section id="home">
+      <Section id="home">
         <SectionContent alignItems="center">
           <SectionTitle>About me</SectionTitle>
           <FlexContainer>
@@ -263,12 +267,12 @@ const Home: NextPage = () => {
             </Content>
           </FlexContainer>
         </SectionContent>
-      </section>
-      <section id="skills">
+      </Section>
+      <Section id="skills">
         <SectionContent alignItems="baseline">
           <h1>Skills</h1>
         </SectionContent>
-      </section>
+      </Section>
     </>
   );
 };
