@@ -199,7 +199,7 @@ const Content = styled.div`
 `;
 
 const SectionContent = styled.div`
-  min-height: 34rem;
+  min-height: 32rem;
   display: flex;
   flex-direction: column;
   justify-content: ${({ alignItems }: { alignItems: "center" | "baseline" }) =>
@@ -213,8 +213,8 @@ const SectionTitle = styled.h1`
 `;
 
 const Section = styled.section`
-  margin-top: 2rem;
-`
+  margin: 2rem 0;
+`;
 
 const Home: NextPage = () => {
   return (
