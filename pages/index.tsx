@@ -3,7 +3,7 @@ import NextLink from "next/link";
 import styled from "styled-components";
 import NextImage from "next/image";
 import profileImg from "../public/profile-img.webp";
-import { createRef, ReactNode, useRef, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import useElementIsVisible from "hooks/useElementIsVisible";
 
 const CenteredText = styled.p`
@@ -271,6 +271,13 @@ const Section = styled.section`
   margin: 2rem 0;
 `;
 
+const SkillsGrid = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: 10rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+`;
+
 const Home: NextPage = () => {
   return (
     <>
@@ -325,7 +332,21 @@ const Home: NextPage = () => {
       </Section>
       <Section id="skills">
         <SectionContent alignItems="baseline">
-          <h1>Skills</h1>
+          <SectionTitle>Skills</SectionTitle>
+          <SkillsGrid>
+            <div style={{ position: "relative" }}>
+              <Image src="/html.svg" layout="fill" objectFit="contain" />
+            </div>
+            <div style={{ position: "relative" }}>
+              <Image src="/css.svg" layout="fill" objectFit="contain" />
+            </div>
+            <div style={{ position: "relative" }}>
+              <Image src="/js.svg" layout="fill" objectFit="contain" />
+            </div>
+            <div style={{ position: "relative" }}>
+              <Image src="/ts.svg" layout="fill" objectFit="contain" />
+            </div>
+          </SkillsGrid>
         </SectionContent>
       </Section>
     </>
