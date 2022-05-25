@@ -260,8 +260,9 @@ const SectionTitle = styled.h1`
   font-size: 2.5rem;
   margin: 0 0 2rem 0;
   text-decoration: underline;
-  text-underline-offset: 0.15em;
   text-decoration-color: var(--lineColor);
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 0.15em;
 `;
 
 const Section = styled.section`
