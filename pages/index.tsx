@@ -275,7 +275,21 @@ const SkillsGrid = styled.div`
   display: grid;
   gap: 1rem;
   grid-auto-rows: 10rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+`;
+
+const SkillArticle = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SkillArticleImageContainer = styled.div`
+  position: relative;
+  flex: 1;
+`;
+
+const SkillArticleTitle = styled.h3`
+  text-align: center;
 `;
 
 const Home: NextPage = () => {
@@ -331,21 +345,27 @@ const Home: NextPage = () => {
         </SectionContent>
       </Section>
       <Section id="skills">
-        <SectionContent alignItems="baseline">
+        <SectionContent alignItems="center">
           <SectionTitle>Skills</SectionTitle>
           <SkillsGrid>
-            <div style={{ position: "relative" }}>
-              <Image src="/html.svg" layout="fill" objectFit="contain" />
-            </div>
-            <div style={{ position: "relative" }}>
-              <Image src="/css.svg" layout="fill" objectFit="contain" />
-            </div>
-            <div style={{ position: "relative" }}>
-              <Image src="/js.svg" layout="fill" objectFit="contain" />
-            </div>
-            <div style={{ position: "relative" }}>
-              <Image src="/ts.svg" layout="fill" objectFit="contain" />
-            </div>
+            {[
+              ["HTML", "html"],
+              ["CSS", "css"],
+              ["Javascript", "js"],
+              ["Typescript", "ts"],
+              ["React", "react"],
+            ].map(([title, scrName], index) => (
+              <SkillArticle key={index}>
+                <SkillArticleTitle>{title}</SkillArticleTitle>
+                <SkillArticleImageContainer>
+                  <Image
+                    src={`/${scrName}.svg`}
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </SkillArticleImageContainer>
+              </SkillArticle>
+            ))}
           </SkillsGrid>
         </SectionContent>
       </Section>
