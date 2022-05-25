@@ -3,7 +3,8 @@ import NextLink from "next/link";
 import styled from "styled-components";
 import NextImage from "next/image";
 import profileImg from "../public/profile-img.webp";
-import { useState } from "react";
+import { createRef, useRef, useState } from "react";
+import useElementIsVisible from "hooks/useElementIsVisible";
 
 const CenteredText = styled.p`
   text-align: center;
@@ -53,11 +54,59 @@ const CountryFlag = styled.span`
   white-space: nowrap;
 `;
 
-const WavingHand = styled.span`
+const WavingHandStyled = styled.span`
   @media (prefers-color-scheme: light) {
     filter: contrast(0.5);
   }
+
+  ${({ isVisible }: { isVisible: boolean }) =>
+    isVisible &&
+    `
+    animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
+    animation-duration: 2.5s; /* Change to speed up or slow down */
+    transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+    display: inline-block;
+
+    @keyframes wave-animation {
+      0% {
+        transform: rotate(0deg);
+      }
+      10% {
+        transform: rotate(14deg);
+      } /* The following five values can be played with to make the waving more or less extreme */
+      20% {
+        transform: rotate(-8deg);
+      }
+      30% {
+        transform: rotate(14deg);
+      }
+      40% {
+        transform: rotate(-4deg);
+      }
+      50% {
+        transform: rotate(10deg);
+      }
+      60% {
+        transform: rotate(0deg);
+      } /* Reset for the last half to pause */
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  `}
 `;
+
+const WavingHand = (props) => {
+  const wavingHandRef = useRef();
+
+  const isVisible = useElementIsVisible({ elementRef: wavingHandRef });
+
+  console.log(`Is visible?: ${isVisible}`);
+
+  return (
+    <WavingHandStyled ref={wavingHandRef} isVisible={isVisible} {...props} />
+  );
+};
 
 const CustomLink = styled.a`
   background-color: #832c1b;
@@ -210,6 +259,8 @@ const SectionTitle = styled.h1`
   text-align: center;
   font-size: 2.5rem;
   margin: 0 0 2rem 0;
+  text-underline-offset: 0.15em;
+  text-decoration: underline var(--lineColor);
 `;
 
 const Section = styled.section`

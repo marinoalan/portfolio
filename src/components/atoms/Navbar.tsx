@@ -268,7 +268,7 @@ const Navbar = () => {
   }, [activeHamburger, matches]);
 
   return (
-    <Header>
+    <Header id="navigationBar">
       <ResponsiveNavbarLogo />
       <Navigation
         setActiveHamburger={setActiveHamburger}
