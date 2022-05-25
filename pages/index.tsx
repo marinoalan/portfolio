@@ -65,6 +65,8 @@ const WavingHandStyled = styled.span`
     animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
     animation-duration: 2.5s; /* Change to speed up or slow down */
     transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+    animation-iteration-count: 2;
+    animation-delay: 1s;
     display: inline-block;
 
     @keyframes wave-animation {
