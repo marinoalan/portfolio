@@ -11,8 +11,6 @@ const useElementIsVisible = ({
   useEffect(() => {
     const navbar: HTMLElement | null = document.getElementById("navigationBar");
 
-    console.log("ESTO");
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         setElementRefIsVisible(entry.isIntersecting);

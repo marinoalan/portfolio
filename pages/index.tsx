@@ -3,7 +3,7 @@ import NextLink from "next/link";
 import styled from "styled-components";
 import NextImage from "next/image";
 import profileImg from "../public/profile-img.webp";
-import { createRef, useRef, useState } from "react";
+import { createRef, ReactNode, useRef, useState } from "react";
 import useElementIsVisible from "hooks/useElementIsVisible";
 
 const CenteredText = styled.p`
@@ -96,15 +96,15 @@ const WavingHandStyled = styled.span`
   `}
 `;
 
-const WavingHand = (props) => {
-  const wavingHandRef = useRef();
+const WavingHand = ({ children }: { children: ReactNode }) => {
+  const wavingHandRef = useRef(null);
 
   const isVisible = useElementIsVisible({ elementRef: wavingHandRef });
 
-  console.log(`Is visible?: ${isVisible}`);
-
   return (
-    <WavingHandStyled ref={wavingHandRef} isVisible={isVisible} {...props} />
+    <WavingHandStyled ref={wavingHandRef} isVisible={isVisible}>
+      {children}
+    </WavingHandStyled>
   );
 };
 
