@@ -55,8 +55,6 @@ const CountryFlag = styled.span`
 `;
 
 const WavingHandStyled = styled.span`
-  font-size: 1.3em;
-
   @media (prefers-color-scheme: light) {
     filter: contrast(0.5);
   }
