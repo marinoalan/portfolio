@@ -166,6 +166,13 @@ const Image = styled(NextImage)`
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+
+  ${({ lightBackgroundColor }: { lightBackgroundColor?: string }) =>
+    lightBackgroundColor &&
+    `
+    @media (prefers-color-scheme: light) {
+      background-color: ${lightBackgroundColor};
+    }`}
 `;
 
 const ImageShapeBackground = styled.div`
@@ -292,6 +299,16 @@ const SkillArticleTitle = styled.h3`
   text-align: center;
 `;
 
+type TSkillArticle = [string, string, string?];
+
+const skillArticles: TSkillArticle[] = [
+  ["HTML", "html"],
+  ["CSS", "css"],
+  ["Javascript", "js"],
+  ["Typescript", "ts"],
+  ["React", "react", "#0f1411"],
+];
+
 const Home: NextPage = () => {
   return (
     <>
@@ -348,24 +365,21 @@ const Home: NextPage = () => {
         <SectionContent alignItems="center">
           <SectionTitle>Skills</SectionTitle>
           <SkillsGrid>
-            {[
-              ["HTML", "html"],
-              ["CSS", "css"],
-              ["Javascript", "js"],
-              ["Typescript", "ts"],
-              ["React", "react"],
-            ].map(([title, scrName], index) => (
-              <SkillArticle key={index}>
-                <SkillArticleTitle>{title}</SkillArticleTitle>
-                <SkillArticleImageContainer>
-                  <Image
-                    src={`/${scrName}.svg`}
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </SkillArticleImageContainer>
-              </SkillArticle>
-            ))}
+            {skillArticles.map(
+              ([title, scrName, lightBackgroundColor], index) => (
+                <SkillArticle key={index}>
+                  <SkillArticleTitle>{title}</SkillArticleTitle>
+                  <SkillArticleImageContainer>
+                    <Image
+                      src={`/${scrName}.svg`}
+                      layout="fill"
+                      objectFit="contain"
+                      lightBackgroundColor={lightBackgroundColor}
+                    />
+                  </SkillArticleImageContainer>
+                </SkillArticle>
+              )
+            )}
           </SkillsGrid>
         </SectionContent>
       </Section>
