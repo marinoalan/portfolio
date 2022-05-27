@@ -280,7 +280,7 @@ const Section = styled.section`
 
 const SkillsGrid = styled.div`
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
   grid-auto-rows: 10rem;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
 `;
@@ -302,11 +302,14 @@ const SkillArticleTitle = styled.h3`
 type TSkillArticle = [string, string, string?];
 
 const skillArticles: TSkillArticle[] = [
-  ["HTML", "html"],
-  ["CSS", "css"],
-  ["Javascript", "js"],
-  ["Typescript", "ts"],
-  ["React", "react", "#0f1411"],
+  ["#html", "html.svg"],
+  ["#css", "css.svg"],
+  ["#javascript", "js.svg"],
+  ["#typescript", "ts.svg"],
+  ["#react", "react.svg", "#0f1411"],
+  ["#git", "git.svg"],
+  ["#styled-components", "styled-components.webp", "#0f1411"],
+  ["#nextjs", "nextjs.webp"],
 ];
 
 const Home: NextPage = () => {
@@ -371,7 +374,7 @@ const Home: NextPage = () => {
                   <SkillArticleTitle>{title}</SkillArticleTitle>
                   <SkillArticleImageContainer>
                     <Image
-                      src={`/${scrName}.svg`}
+                      src={`/${scrName}`}
                       layout="fill"
                       objectFit="contain"
                       lightBackgroundColor={lightBackgroundColor}
