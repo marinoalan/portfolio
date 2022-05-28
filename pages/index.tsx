@@ -1,10 +1,18 @@
 import type { NextPage } from "next";
 import NextLink from "next/link";
-import styled from "styled-components";
+import styled, { AnyStyledComponent } from "styled-components";
 import NextImage from "next/image";
 import profileImg from "../public/profile-img.webp";
-import { ReactNode, useRef, useState } from "react";
+import { FunctionComponent, ReactNode, useRef, useState } from "react";
 import useElementIsVisible from "hooks/useElementIsVisible";
+import HTMLIcon from "@components/atoms/icons/HTMLIcon";
+import CSSIcon from "@components/atoms/icons/CSSIcon";
+import JSIcon from "@components/atoms/icons/JSIcon";
+import TSIcon from "@components/atoms/icons/TSIcon";
+import ReactIcon from "@components/atoms/icons/ReactIcon";
+import GITIcon from "@components/atoms/icons/GITIcon";
+import StyledComponentsIcon from "@components/atoms/icons/StyledComponentsIcon";
+import NextIcon from "@components/atoms/icons/NextIcon";
 
 const CenteredText = styled.p`
   text-align: center;
@@ -293,23 +301,31 @@ const SkillArticle = styled.div`
 const SkillArticleImageContainer = styled.div`
   position: relative;
   flex: 1;
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const SkillArticleTitle = styled.h3`
   text-align: center;
 `;
 
-type TSkillArticle = [string, string, string?];
+type TSkillArticle = [string, FunctionComponent];
 
 const skillArticles: TSkillArticle[] = [
-  ["#html", "html.svg"],
-  ["#css", "css.svg"],
-  ["#javascript", "js.svg"],
-  ["#typescript", "ts.svg"],
-  ["#react", "react.svg", "#0f1411"],
-  ["#git", "git.svg"],
-  ["#styled-components", "styled-components.webp", "#0f1411"],
-  ["#nextjs", "nextjs.webp"],
+  ["#html", HTMLIcon],
+  ["#css", CSSIcon],
+  ["#js", JSIcon],
+  ["#ts", TSIcon],
+  ["#react", ReactIcon],
+  ["#git", GITIcon],
+  ["#styled-components", StyledComponentsIcon],
+  ["#nextjs", NextIcon],
 ];
 
 const Home: NextPage = () => {
@@ -368,21 +384,20 @@ const Home: NextPage = () => {
         <SectionContent alignItems="center">
           <SectionTitle>Skills</SectionTitle>
           <SkillsGrid>
-            {skillArticles.map(
-              ([title, scrName, lightBackgroundColor], index) => (
-                <SkillArticle key={index}>
-                  <SkillArticleTitle>{title}</SkillArticleTitle>
-                  <SkillArticleImageContainer>
-                    <Image
+            {skillArticles.map(([title, Component], index) => (
+              <SkillArticle key={index}>
+                <SkillArticleTitle>{title}</SkillArticleTitle>
+                <SkillArticleImageContainer>
+                  <Component />
+                  {/* <Image
                       src={`/${scrName}`}
                       layout="fill"
                       objectFit="contain"
                       lightBackgroundColor={lightBackgroundColor}
-                    />
-                  </SkillArticleImageContainer>
-                </SkillArticle>
-              )
-            )}
+                    /> */}
+                </SkillArticleImageContainer>
+              </SkillArticle>
+            ))}
           </SkillsGrid>
         </SectionContent>
       </Section>
