@@ -13,6 +13,10 @@ import ReactIcon from "@components/atoms/icons/ReactIcon";
 import GITIcon from "@components/atoms/icons/GITIcon";
 import StyledComponentsIcon from "@components/atoms/icons/StyledComponentsIcon";
 import NextIcon from "@components/atoms/icons/NextIcon";
+import NodeIcon from "@components/atoms/icons/NodeIcon";
+import MeteorIcon from "@components/atoms/icons/MeteorIcon";
+import GoogleAnalyticsIcon from "@components/atoms/icons/GoogleAnalyticsIcon";
+import KibanaIcon from "@components/atoms/icons/KibanaIcon";
 
 const CenteredText = styled.p`
   text-align: center;
@@ -289,7 +293,7 @@ const Section = styled.section`
 const SkillsGrid = styled.div`
   display: grid;
   gap: 2rem;
-  grid-auto-rows: 10rem;
+  grid-auto-rows: 8rem;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
 `;
 
@@ -326,6 +330,10 @@ const skillArticles: TSkillArticle[] = [
   ["#git", GITIcon],
   ["#styled-components", StyledComponentsIcon],
   ["#nextjs", NextIcon],
+  ["#nodejs", NodeIcon],
+  ["#meteorjs", MeteorIcon],
+  ["#google-analytics", GoogleAnalyticsIcon],
+  ["#kibana", KibanaIcon],
 ];
 
 const Home: NextPage = () => {
