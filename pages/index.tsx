@@ -294,7 +294,10 @@ const SkillsGrid = styled.div`
   display: grid;
   gap: 2rem;
   grid-auto-rows: 8rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, clamp(6rem, 20vw, 10rem))), 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, clamp(6rem, 20vw, 10rem)), 1fr)
+  );
 `;
 
 const SkillArticle = styled.div`
