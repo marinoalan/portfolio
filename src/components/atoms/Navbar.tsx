@@ -60,8 +60,9 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  width: calc(100% - env(safe-area-inset-right));
+  width: 100%;
   top: 0;
+  left: 0;
   z-index: 2000;
   background-color: var(--backgroundColor);
   min-height: ${NAVBAR_HEIGHT};
