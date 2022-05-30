@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Main = styled.main`
-  margin: 0 var(--horizontalMargin);
+  margin: 6rem var(--horizontalMargin) 0 var(--horizontalMargin);
   display: flex;
 `;
 
