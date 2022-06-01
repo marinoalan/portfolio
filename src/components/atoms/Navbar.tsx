@@ -3,7 +3,7 @@ import NextLink from "next/link";
 import NavbarLogo from "./NavbarLogo";
 import Hamburger from "./Hamburger";
 import { useEffect, useState } from "react";
-import useMediaQuery from "hooks/useMediaQuery";
+import useMediaQuery from "@hooks/useMediaQuery";
 
 type IHRef = "/" | "/about" | "/#skills" | "/#home";
 

@@ -4,7 +4,7 @@ const KibanaIcon: FunctionComponent = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 64 64"
-    fill-rule="evenodd"
+    fillRule="evenodd"
   >
     <path d="M7 24v33.58l23.87-27.5A49.82 49.82 0 0 0 7 24z" fill="#343741" />
     <path d="M7 0v24a49.82 49.82 0 0 1 23.87 6.09L57 0z" fill="#f04e98" />
