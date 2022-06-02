@@ -1,4 +1,4 @@
-import { createRef, RefObject, useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 
 const useElementIsVisible = ({
   elementRef,
