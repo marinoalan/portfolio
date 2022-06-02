@@ -19,7 +19,7 @@ const SectionTitle = styled.h1`
 `;
 
 const StyledSection = styled.section`
-  margin: 2rem 0;
+  padding: 2rem 0;
 `;
 
 const Section = ({
