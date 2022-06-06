@@ -12,7 +12,7 @@ const Ul = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  row-gap: 40px;
+  row-gap: 2.5rem;
   padding: 0;
 
   @media (min-width: 56.5rem) {
@@ -36,7 +36,7 @@ const Li = styled.li`
 
   @media (min-width: 56.5rem) {
     position: relative;
-    width: calc(50% - 15px);
+    width: calc(50% - 0.9375rem);
     &:after {
       content: "";
       position: absolute;
@@ -49,7 +49,7 @@ const Li = styled.li`
 
     &:nth-child(even) {
       margin-left: 50%;
-      transform: translateX(15px);
+      transform: translateX(0.9375rem);
       border-radius: 0 10px 10px 10px;
 
       &:after {
@@ -90,6 +90,51 @@ const ArticleDate = styled.h4`
   }
 `;
 
+const accentureStack = [
+  "react",
+  "next.js",
+  "styled-components",
+  "i18n",
+  "moment.js",
+  "git",
+  "react-hook-form",
+  "google-analytics",
+  "kibana",
+  "eslint",
+  "prettier",
+];
+
+const TechnologyDelimiter = styled.span`
+  color: var(--backgroundColor);
+`;
+
+const TechnologyText = styled.span`
+  white-space: nowrap;
+  background-color: black;
+  border-radius: 2px;
+  padding: 3px;
+`;
+
+const StackText = styled.p`
+  line-height: 30px;
+`;
+
+const StackWithDelimiter = ({ stack }: { stack: string[] }) => {
+  const [firstStackElem, ...restStackElem] = stack;
+  return (
+    <StackText>
+      <TechnologyText>{firstStackElem}</TechnologyText>
+      {restStackElem.map((each) => (
+        <>
+          {" "}
+          <TechnologyDelimiter>-</TechnologyDelimiter>{" "}
+          <TechnologyText>{each}</TechnologyText>
+        </>
+      ))}
+    </StackText>
+  );
+};
+
 const ExperienceSection: FunctionComponent = () => (
   <Section id="experience" title="Experience">
     <Container>
@@ -99,7 +144,8 @@ const ExperienceSection: FunctionComponent = () => (
             <Article>
               <ArticleDate>December 2019 - March 2022</ArticleDate>
               <ArticleTitle>Accenture Argentina</ArticleTitle>
-              <p>Hice tal cosa</p>
+              <p>Bank project</p>
+              <StackWithDelimiter stack={accentureStack} />
             </Article>
           </Li>
           <Li>
