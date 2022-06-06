@@ -12,12 +12,13 @@ const Ul = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  row-gap: 2.5rem;
+  row-gap: 1.5rem;
+
   padding: 0;
 
   @media (min-width: 56.5rem) {
     position: relative;
-    row-gap: 1.5rem;
+    row-gap: 2.5rem;
     &:before {
       content: "";
       position: absolute;
