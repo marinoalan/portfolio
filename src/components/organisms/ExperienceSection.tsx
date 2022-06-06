@@ -31,7 +31,8 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-  background-color: #405164;
+  border: 2px solid #9e9e9e;
+  background-color: #181818;
 
   border-radius: 10px;
 
@@ -80,13 +81,16 @@ const Article = styled.article`
 
 const ArticleTitle = styled.h3`
   margin: 0 0 1rem 0;
+  font-size: 1.3rem;
 `;
 
 const ArticleDate = styled.h4`
+  font-weight: normal;
+  font-size: 0.9rem;
   margin: 0 0 1rem 0;
 
   @media (min-width: 56.5rem) {
-    margin: 0;
+    margin: 0px 0px 0.6rem;
     top: -24px;
     position: absolute;
   }
@@ -139,6 +143,8 @@ const StackWithDelimiter = ({ stack }: { stack: string[] }) => {
 
 const ArticleDescription = styled.p`
   margin: 0;
+  font-weight: bold;
+  color: #9e9e9e;
 `;
 
 const ExperienceSection: FunctionComponent = () => (
@@ -149,7 +155,7 @@ const ExperienceSection: FunctionComponent = () => (
           <Li>
             <Article>
               <ArticleDate>December 2019 - March 2022</ArticleDate>
-              <ArticleTitle>ACCENTURE ARGENTINA</ArticleTitle>
+              <ArticleTitle>Accenture Argentina</ArticleTitle>
               <ArticleDescription>
                 Build single-page applications using Next and React. Make alerts
                 and graphs to analyze user interactions and performance to
@@ -160,7 +166,7 @@ const ExperienceSection: FunctionComponent = () => (
           <Li>
             <Article>
               <ArticleDate>May 2019 - December 2019</ArticleDate>
-              <ArticleTitle>ATIX LABS</ArticleTitle>
+              <ArticleTitle>Atix Labs</ArticleTitle>
               <ArticleDescription>
                 Build reactive frontends using Meteor and React.
               </ArticleDescription>
@@ -169,7 +175,7 @@ const ExperienceSection: FunctionComponent = () => (
           <Li>
             <Article>
               <ArticleDate>July 2018 - May 2019</ArticleDate>
-              <ArticleTitle>SOFTTEK ARGENTINA</ArticleTitle>
+              <ArticleTitle>Softtek Argentina</ArticleTitle>
               <ArticleDescription>
                 Build backend API REST using Java 8 and migrate frontend from
                 AngularJS to Angular 7.
