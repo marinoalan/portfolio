@@ -78,7 +78,7 @@ const Article = styled.article`
 `;
 
 const ArticleTitle = styled.h3`
-  margin: 0;
+  margin: 0 0 1rem 0;
 `;
 
 const ArticleDate = styled.h4`
@@ -135,6 +135,10 @@ const StackWithDelimiter = ({ stack }: { stack: string[] }) => {
   );
 };
 
+const ArticleDescription = styled.p`
+  margin: 0;
+`;
+
 const ExperienceSection: FunctionComponent = () => (
   <Section id="experience" title="Experience">
     <Container>
@@ -143,23 +147,33 @@ const ExperienceSection: FunctionComponent = () => (
           <Li>
             <Article>
               <ArticleDate>December 2019 - March 2022</ArticleDate>
-              <ArticleTitle>Accenture Argentina</ArticleTitle>
-              <p>Bank project</p>
-              <StackWithDelimiter stack={accentureStack} />
+              <ArticleTitle>
+                ACCENTURE ARGENTINA
+              </ArticleTitle>
+              <ArticleDescription>
+                Build single-page applications using Next and React. Make alerts
+                and graphs to analyze user interactions and performance to
+                iterate solutions.
+              </ArticleDescription>
             </Article>
           </Li>
           <Li>
             <Article>
               <ArticleDate>May 2019 - December 2019</ArticleDate>
-              <ArticleTitle>Atix Labs</ArticleTitle>
-              <p>Hice tal cosa</p>
+              <ArticleTitle>ATIX LABS</ArticleTitle>
+              <ArticleDescription>
+                Build reactive frontends using Meteor and React.
+              </ArticleDescription>
             </Article>
           </Li>
           <Li>
             <Article>
               <ArticleDate>July 2018 - May 2019</ArticleDate>
-              <ArticleTitle>Softtek Argentina</ArticleTitle>
-              <p>Hice tal cosa</p>
+              <ArticleTitle>SOFTTEK ARGENTINA</ArticleTitle>
+              <ArticleDescription>
+                Build backend API REST using Java 8 and migrate frontend from
+                AngularJS to Angular 7
+              </ArticleDescription>
             </Article>
           </Li>
         </Ul>
