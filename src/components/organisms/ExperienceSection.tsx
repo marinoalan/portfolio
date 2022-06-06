@@ -17,7 +17,7 @@ const Ul = styled.ul`
 
   @media (min-width: 56.5rem) {
     position: relative;
-
+    row-gap: 1.5rem;
     &:before {
       content: "";
       position: absolute;
@@ -82,9 +82,10 @@ const ArticleTitle = styled.h3`
 `;
 
 const ArticleDate = styled.h4`
-  margin: 0;
+  margin: 0 0 1rem 0;
 
   @media (min-width: 56.5rem) {
+    margin: 0;
     top: -24px;
     position: absolute;
   }
@@ -147,9 +148,7 @@ const ExperienceSection: FunctionComponent = () => (
           <Li>
             <Article>
               <ArticleDate>December 2019 - March 2022</ArticleDate>
-              <ArticleTitle>
-                ACCENTURE ARGENTINA
-              </ArticleTitle>
+              <ArticleTitle>ACCENTURE ARGENTINA</ArticleTitle>
               <ArticleDescription>
                 Build single-page applications using Next and React. Make alerts
                 and graphs to analyze user interactions and performance to
@@ -172,7 +171,7 @@ const ExperienceSection: FunctionComponent = () => (
               <ArticleTitle>SOFTTEK ARGENTINA</ArticleTitle>
               <ArticleDescription>
                 Build backend API REST using Java 8 and migrate frontend from
-                AngularJS to Angular 7
+                AngularJS to Angular 7.
               </ArticleDescription>
             </Article>
           </Li>
