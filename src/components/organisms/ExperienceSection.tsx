@@ -56,7 +56,7 @@ const Li = styled.li`
 
       &:after {
         left: 0;
-        transform: translateX(-21px);
+        transform: translateX(-23px);
       }
     }
 
@@ -65,7 +65,7 @@ const Li = styled.li`
 
       &:after {
         right: 0;
-        transform: translateX(21px);
+        transform: translateX(19px);
       }
     }
   }
