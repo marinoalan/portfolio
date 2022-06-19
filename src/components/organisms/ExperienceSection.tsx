@@ -32,7 +32,7 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   border: 2px solid #9e9e9e;
-  background-color: #212121;
+  background-color: #101010;
 
   border-radius: 10px;
 
