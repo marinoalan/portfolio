@@ -32,7 +32,7 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   border: 2px solid #9e9e9e;
-  background-color: #101010;
+  background-color: var(--backgroundColor);
 
   border-radius: 10px;
 
@@ -143,8 +143,8 @@ const StackWithDelimiter = ({ stack }: { stack: string[] }) => {
 
 const ArticleDescription = styled.p`
   margin: 0;
-  font-weight: bold;
-  color: #BDBDBD;
+  font-size: 0.8125rem;
+  color: #bdbdbd;
 `;
 
 const ExperienceSection: FunctionComponent = () => (
