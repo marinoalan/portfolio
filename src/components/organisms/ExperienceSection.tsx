@@ -31,7 +31,15 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-  border: 2px solid #9e9e9e;
+  @media (prefers-color-scheme: dark) {
+    --experienceBorderColor: #9e9e9e;
+  }
+
+  @media (prefers-color-scheme: light) {
+    --experienceBorderColor: #7addac;
+  }
+
+  border: 2px solid var(--experienceBorderColor);
   background-color: var(--backgroundColor);
 
   border-radius: 10px;
@@ -144,7 +152,16 @@ const StackWithDelimiter = ({ stack }: { stack: string[] }) => {
 const ArticleDescription = styled.p`
   margin: 0;
   font-size: 0.8125rem;
-  color: #bdbdbd;
+
+  @media (prefers-color-scheme: dark) {
+    --experienceDescriptionColor: #bdbdbd;
+  }
+
+  @media (prefers-color-scheme: light) {
+    --experienceDescriptionColor: #424242;
+  }
+
+  color: var(--experienceDescriptionColor);
 `;
 
 const ExperienceSection: FunctionComponent = () => (
