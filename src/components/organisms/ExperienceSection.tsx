@@ -31,15 +31,7 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-  @media (prefers-color-scheme: dark) {
-    --experienceBorderColor: #9e9e9e;
-  }
-
-  @media (prefers-color-scheme: light) {
-    --experienceBorderColor: #7addac;
-  }
-
-  border: 2px solid var(--experienceBorderColor);
+  border: 2px solid var(--lineColor);
   background-color: var(--backgroundColor);
 
   border-radius: 10px;
