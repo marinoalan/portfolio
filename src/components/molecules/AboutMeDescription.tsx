@@ -11,7 +11,6 @@ const CenteredText = styled.p`
 
   margin-block: 0px;
   font-size: 1rem;
-  font-weight: bold;
   line-height: 1.4rem;
 
   @media (prefers-color-scheme: light) {

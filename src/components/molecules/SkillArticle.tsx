@@ -8,6 +8,7 @@ const Article = styled.article`
 
 const Title = styled.h3`
   text-align: center;
+  font-weight: normal;
 `;
 
 const SkillSVGContainer = styled.div`
