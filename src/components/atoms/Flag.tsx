@@ -8,7 +8,6 @@ const FlagSpan = styled.span`
   @media (prefers-color-scheme: dark) {
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent;
-    font-weight: bold;
   }
 `;
 

@@ -26,6 +26,11 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: var(--horizontalMargin);
+
+  border-radius: 10px;
+  padding: 10px;
+  border: 2px solid var(--lineColor);
+  background-color: #1e1e1e;
 `;
 
 const millisecondsSecond = 1000;

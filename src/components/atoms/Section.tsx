@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 
 const SectionContent = styled.div`
-  min-height: 32rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

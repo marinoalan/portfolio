@@ -20,6 +20,23 @@ const Content = styled.div`
   min-width: 60%;
   align-items: center;
   display: flex;
+  position: relative;
+
+  @media (min-width: 60%) {
+    &:after {
+      content: "";
+      height: 16px;
+      width: 16px;
+      background-color: var(--lineColor);
+      border: inherit;
+      position: absolute;
+      left: -8px;
+      top: calc(50% - 10px);
+      clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+      transform: rotate(45deg);
+      border-radius: 0 0 0 0.3em;
+    }
+  }
 `;
 
 const AboutMeSection = () => (
