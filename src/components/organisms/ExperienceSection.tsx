@@ -32,7 +32,13 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   border: 2px solid var(--lineColor);
-  background-color: #1e1e1e;
+  @media (prefers-color-scheme: light) {
+    background-color: transparent;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #1e1e1e;
+  }
 
   border-radius: 10px;
 
