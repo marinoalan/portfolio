@@ -29,7 +29,10 @@ const TextContainer = styled.div`
 
   border-radius: 10px;
   padding: 10px;
-  border: 2px solid var(--lineColor);
+  
+  @media (min-width: 56.5rem) {
+    border: 2px solid var(--lineColor);
+  }
   
   @media (prefers-color-scheme: light) {
     background-color: transparent;
