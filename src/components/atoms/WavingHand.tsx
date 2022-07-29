@@ -4,8 +4,10 @@ import useElementIsVisible from "@hooks/useElementIsVisible";
 
 const WavingHandStyled = styled.span`
   @media (prefers-color-scheme: light) {
-    filter: contrast(0.5);
+    filter: contrast(0.7);
   }
+
+  font-size: 1.3em;
 
   ${({ isVisible }: { isVisible: boolean }) =>
     isVisible &&
