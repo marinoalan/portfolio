@@ -35,7 +35,7 @@ const TextContainer = styled.div`
   }
   
   @media (prefers-color-scheme: light) {
-    background-color: transparent;
+    background-color: #6ac396;
   }
 
   @media (prefers-color-scheme: dark) {
