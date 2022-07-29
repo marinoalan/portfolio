@@ -3,16 +3,10 @@ import styled from "styled-components";
 import useElementIsVisible from "@hooks/useElementIsVisible";
 
 const WavingHandStyled = styled.span`
-  &:before {
-    @media (prefers-color-scheme: light) {
-      content: '👋🏻';
-    }
-  
-    @media (prefers-color-scheme: dark) {
-      content: '👋';
-    }
+  @media (prefers-color-scheme: light) {
+    background: #498b69;
+    border-radius: 50%;
   }
-  
 
   ${({ isVisible }: { isVisible: boolean }) =>
     isVisible &&
@@ -50,7 +44,9 @@ const WavingHand = () => {
   const isVisible = useElementIsVisible({ elementRef: wavingHandRef });
 
   return (
-    <WavingHandStyled ref={wavingHandRef} isVisible={isVisible} />
+    <WavingHandStyled ref={wavingHandRef} isVisible={isVisible}>
+      👋
+    </WavingHandStyled>
   );
 };
 
