@@ -1,13 +1,18 @@
-import { ReactNode, useRef } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import useElementIsVisible from "@hooks/useElementIsVisible";
 
 const WavingHandStyled = styled.span`
-  @media (prefers-color-scheme: light) {
-    filter: contrast(0.7);
+  &:before {
+    @media (prefers-color-scheme: light) {
+      content: '👋🏻';
+    }
+  
+    @media (prefers-color-scheme: dark) {
+      content: '👋';
+    }
   }
-
-  font-size: 1.3em;
+  
 
   ${({ isVisible }: { isVisible: boolean }) =>
     isVisible &&
@@ -45,9 +50,7 @@ const WavingHand = () => {
   const isVisible = useElementIsVisible({ elementRef: wavingHandRef });
 
   return (
-    <WavingHandStyled ref={wavingHandRef} isVisible={isVisible}>
-      👋
-    </WavingHandStyled>
+    <WavingHandStyled ref={wavingHandRef} isVisible={isVisible} />
   );
 };
 
