@@ -30,7 +30,7 @@ const Span = styled.span`
     bottom: -.5rem;
     width: 0;
     border-bottom: .3rem solid var(--lineColor);
-    transition: width .5s cubic-bezier(.74, -.57, .33, 1.19);
+    transition: width .4s cubic-bezier(.74, -.57, .33, 1.19);
   }
 
   @media (hover: hover) and (pointer: fine) {

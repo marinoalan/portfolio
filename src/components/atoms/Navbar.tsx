@@ -5,7 +5,7 @@ import Hamburger from "./Hamburger";
 import { useEffect, useState } from "react";
 import useMediaQuery from "@hooks/useMediaQuery";
 
-type IHRef = "/" | "/about" | "/#skills" | "/#home";
+type IHRef = "/" | "/#home" | "/about" | "/#skills" | "/#experience";
 
 interface ILink {
   href: IHRef;
@@ -82,9 +82,13 @@ const Header = styled.header`
 
 const Ul = styled.ul`
   list-style-type: none;
+  display: flex;
+
   > a {
     color: var(--fontColor) !important;
   }
+
+  column-gap: 1.5rem;
 
   ${({ isActive }: { isActive: boolean }) =>
     isActive &&
@@ -169,11 +173,17 @@ const HamburgerNavbar = styled(Hamburger)`
   }
 `;
 
+const ExperienceLink: ILink = {
+  href: "/#experience",
+  text: "Experience",
+  scroll: false,
+};
+
 const SkillsLink: ILink = { href: "/#skills", text: "Skills", scroll: false };
 
 const HomeLink: ILink = { href: "/#home", text: "Home", homeLink: true };
 
-const links: ILink[] = [HomeLink, SkillsLink];
+const links: ILink[] = [HomeLink, SkillsLink, ExperienceLink];
 
 const ResponsiveNavbarLogo = styled(NavbarLogo)`
   @media (max-width: ${MAX_WIDTH_FOR_SIDEBAR}) {
@@ -182,12 +192,33 @@ const ResponsiveNavbarLogo = styled(NavbarLogo)`
 `;
 
 const Li = styled.li`
+  position: relative;
+
   @media (prefers-color-scheme: light) {
     --liBorderBottomColor: white;
   }
 
   @media (prefers-color-scheme: dark) {
     --liBorderBottomColor: var(--backgroundColor);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 0;
+    border-bottom: 0.3rem solid var(--lineColor);
+    transition: width 0.4s cubic-bezier(0.74, -0.57, 0.33, 1.19);
   }
 
   ${({ homeLink }: { homeLink?: boolean }) =>
@@ -203,6 +234,10 @@ const Li = styled.li`
     width: 100%;
     display: flex;
     border-bottom: 2px solid var(--liBorderBottomColor);
+
+    &:after {
+      content: none;
+    }
   }
 `;
 
