@@ -12,7 +12,15 @@ const SectionTitle = styled.h1`
   font-size: 2.5rem;
   margin: 0 0 2rem 0;
   text-decoration: underline;
-  text-decoration-color: var(--lineColor);
+
+  @media (prefers-color-scheme: light) {
+    text-decoration-color: var(--fontColor);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    text-decoration-color: var(--lineColor);
+  }
+  
   text-underline-offset: 0.17em;
   text-decoration-thickness: 0.15em;
 `;
