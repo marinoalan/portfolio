@@ -28,12 +28,18 @@ const TextContainer = styled.div`
   row-gap: var(--horizontalMargin);
 
   border-radius: 10px;
-  padding: 10px;
-  
-  @media (min-width: 56.5rem) {
-    border: 2px solid var(--lineColor);
+  padding: 20px;
+
+  @media (prefers-color-scheme: light) {
+    box-shadow: rgb(14 30 37 / 12%) 0px 2px 4px 0px,
+      rgb(14 30 37 / 32%) 0px 2px 16px 0px;
   }
-  
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: rgb(57 242 55 / 12%) 0px 2px 4px 0px,
+      rgb(57 242 55 / 32%) 0px 2px 16px 0px;
+  }
+
   @media (prefers-color-scheme: light) {
     background-color: #6ac396;
   }
