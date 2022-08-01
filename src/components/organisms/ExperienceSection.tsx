@@ -26,12 +26,17 @@ const Ul = styled.ul`
       width: 2px;
       left: calc(50% - 1px);
       background-color: var(--lineColor);
+      background-color: #2a2a2a;
     }
   }
 `;
 
 const Li = styled.li`
-  border: 2px solid var(--lineColor);
+  border: 2px solid #2a2a2a;
+  border-radius: 10px;
+  box-shadow: rgb(14 30 37 / 12%) 0px 2px 4px 0px,
+    rgb(14 30 37 / 32%) 0px 2px 16px 0px;
+
   @media (prefers-color-scheme: light) {
     background-color: #6ac396;
   }
@@ -40,29 +45,30 @@ const Li = styled.li`
     background-color: #1e1e1e;
   }
 
-  border-radius: 10px;
-
   @media (min-width: 56.5rem) {
     position: relative;
     width: calc(50% - 0.9375rem);
+    width: calc(50% - 15px);
     &:after {
       content: "";
       position: absolute;
-      height: 12px;
-      width: 12px;
+      height: 10px;
+      width: 10px;
       border-radius: 50%;
-      background-color: var(--fontColor);
-      top: -12px;
+      top: -13px;
+      background-color: var(--lineColor);
+      border: 2px solid #2a2a2a;
     }
 
     &:nth-child(even) {
-      margin-left: 50%;
-      transform: translateX(0.9375rem);
+      // margin-left: 50%;
+      // transform: translateX(0.9375rem);
+      margin-left: calc(50% + 11px);
       border-radius: 0 10px 10px 10px;
 
       &:after {
         left: 0;
-        transform: translateX(-23px);
+        transform: translateX(-20px);
       }
     }
 
@@ -71,7 +77,7 @@ const Li = styled.li`
 
       &:after {
         right: 0;
-        transform: translateX(19px);
+        transform: translateX(20px);
       }
     }
   }
